@@ -1,0 +1,46 @@
+{
+  // --- Global Editor Rules ---
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true,
+    "**/.venv": true,
+    "**/.next": true
+  },
+
+  // --- Frontend Rules (Prettier) ---
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // --- Backend Rules (Black + Isort) ---
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  
+  // Specific arguments to enforce PEP 8 (79 chars) instead of Black's default (88)
+  "black-formatter.args": [
+    "--line-length", "79"
+  ],
+  "isort.args": [
+    "--profile", "black",
+    "--line-length", "79"
+  ],
+
+  // --- Tailwind IntelliSense Setup ---
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}

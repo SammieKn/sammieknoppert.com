@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    // --- Backend (Python) ---
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+
+    // --- Frontend (Next.js) ---
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "yoavblier.pretty-ts-errors"  // Updated ID
+  ]
+}
