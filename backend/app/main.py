@@ -1,6 +1,18 @@
-def main():
-    print("Hello from backend!")
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# VERY IMPORTANT: This allows your frontend to talk to your backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/api/hello")
+async def hello():
+    return {"message": "Hello from FastAPI!"}
