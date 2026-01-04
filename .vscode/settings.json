@@ -24,7 +24,12 @@
       "source.organizeImports": "explicit"
     }
   },
-  
+  "python.analysis.extraPaths": [
+    "./backend"
+  ],
+  // Specify the path to the virtual environment's Python interpreter
+  "python.defaultInterpreterPath": "backend/.venv/Scripts/python.exe",
+
   // Specific arguments to enforce PEP 8 (79 chars) instead of Black's default (88)
   "black-formatter.args": [
     "--line-length", "79"
