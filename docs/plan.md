@@ -30,3 +30,17 @@
     - Choose a Shadcn "Card" style for projects.
     - Choose a "Navigation" layout (Sidebar vs. Top Bar).
 - [ ] **Mockup:** Create a rough "wireframe" (mental or drawn) of the Homepage structure.
+
+## 4. Overview:
+- I want a single page (hero section) home where my: welcome message, about and contact information is displayed.
+    - A clear headline "Bridging the gap between Civil Engineering and IT"
+    - Elevator pitch: "1-2 sentence summary"
+- A projects/case study page
+    - Problem
+    - Approach
+    - Execution
+    - Business Value
+    - Visuals
+- About Me (bit further down), with a downloadable cv
+- Blog?
+- I want a simple contact page where my email is displayed promptly, followed by my LinkedIn and GitHub
