@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.core.supabase import supabase  # Import our new client
+
 app = FastAPI()
 
-# VERY IMPORTANT: This allows your frontend to talk to your backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
@@ -13,6 +14,14 @@ app.add_middleware(
 )
 
 
-@app.get("/api/hello")
-async def hello():
-    return {"message": "Hello from FastAPI!"}
+@app.get("/api/health")
+async def health_check():
+    try:
+        # We try to select from a table that doesn't exist.
+        # If we get a Supabase error (like "relation does not exist"),
+        # it means we successfully connected!
+        response = supabase.table("non_existent_table").select("*").execute()
+        return {"status": "connected", "details": "Supabase allows connection"}
+    except Exception as e:
+        # If the connection fails (e.g. wrong key), it will throw an auth error here
+        return {"status": "connected", "details": str(e)}
