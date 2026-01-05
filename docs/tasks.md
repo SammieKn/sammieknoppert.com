@@ -28,20 +28,24 @@ Developer note: Keep the frontend “static-first” by avoiding any required ba
 
 ## Phase 2: Layout & Navigation
 
-- [ ] 2.1 Create `frontend/src/components/layout/` directory
-- [ ] 2.2 Create `Header.tsx` component with sticky header styling
-- [ ] 2.3 Add name/logo to Header on the left side
-- [ ] 2.4 Add navigation links (Home, About, Contact, Projects) to Header
-- [ ] 2.5 Implement navigation logic placeholders (to be completed in Phase 5)
-- [ ] 2.6 Use Shadcn NavigationMenu component in Header
-- [ ] 2.7 Create `Footer.tsx` component
-- [ ] 2.8 Add social icons (LinkedIn, GitHub) to Footer using lucide-react
-- [ ] 2.9 Add email address to Footer
-- [ ] 2.10 Add "Open Source" message with GitHub repository link to Footer
-- [ ] 2.11 Update `frontend/src/app/layout.tsx` to import Header component
-- [ ] 2.12 Update `frontend/src/app/layout.tsx` to import Footer component
-- [ ] 2.13 Configure metadata (title, description, OG tags) in layout.tsx
-- [ ] 2.14 Apply global styles from `globals.css`
+- [x] 2.1 Create `frontend/src/components/layout/` directory
+- [x] 2.2 Create `Header.tsx` component with sticky header styling
+- [x] 2.3 Add name/logo to Header on the left side
+- [x] 2.4 Add navigation links (Home, About, Contact, Projects) to Header
+- [x] 2.5 Implement navigation logic placeholders (to be completed in Phase 5)
+- [x] 2.6 Use Shadcn NavigationMenu component in Header
+
+Developer note: Installed shadcn/ui `navigation-menu` via CLI and created `Header.tsx` using the stock component with basic link hrefs; Phase 5 will add route-aware scroll behavior.
+- [x] 2.7 Create `Footer.tsx` component
+- [x] 2.8 Add social icons (LinkedIn, GitHub) to Footer using lucide-react
+- [x] 2.9 Add email address to Footer
+- [x] 2.10 Add "Open Source" message with GitHub repository link to Footer
+- [x] 2.11 Update `frontend/src/app/layout.tsx` to import Header component
+- [x] 2.12 Update `frontend/src/app/layout.tsx` to import Footer component
+- [x] 2.13 Configure metadata (title, description, OG tags) in layout.tsx
+- [x] 2.14 Apply global styles from `globals.css`
+
+Developer note: Added `Footer.tsx` (lucide icons + email + open-source link) and wired both `<Header />` and `<Footer />` into the root layout so the header/footer render on every page; updated basic site metadata while keeping global styles via `globals.css`.
 
 ---
 
