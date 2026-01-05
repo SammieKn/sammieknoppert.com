@@ -52,14 +52,16 @@ Developer note: Added `Footer.tsx` (lucide icons + email + open-source link) and
 ## Phase 3: Home Page (Single Page Flow)
 
 ### Hero Section
-- [ ] 3.1.1 Create `frontend/src/components/sections/` directory
-- [ ] 3.1.2 Create `Hero.tsx` component
-- [ ] 3.1.3 Add welcome message to Hero
-- [ ] 3.1.4 Add headline to Hero
-- [ ] 3.1.5 Add elevator pitch (1-2 sentences) to Hero
-- [ ] 3.1.6 Add placeholder for hero image
-- [ ] 3.1.7 Add CTA button using Shadcn Button component
-- [ ] 3.1.8 Style Hero section as full-screen or prominent top section
+- [x] 3.1.1 Create `frontend/src/components/sections/` directory
+- [x] 3.1.2 Create `Hero.tsx` component
+- [x] 3.1.3 Add welcome message to Hero
+- [x] 3.1.4 Add headline to Hero
+- [x] 3.1.5 Add elevator pitch (1-2 sentences) to Hero
+- [x] 3.1.6 Add placeholder for hero image
+- [x] 3.1.7 Add CTA button using Shadcn Button component
+- [x] 3.1.8 Style Hero section as full-screen or prominent top section
+
+Developer note: Installed the stock shadcn `Button` component, created a server `Hero` section with Next `Image` + two CTA buttons, and rendered it on the home page for immediate verification.
 
 ### About Section
 - [ ] 3.2.1 Create `About.tsx` component
