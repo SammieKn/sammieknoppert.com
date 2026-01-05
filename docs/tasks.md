@@ -98,11 +98,26 @@ Developer note: Installed shadcn `card`, `accordion`, and `carousel`; built a da
 Developer note: Created a shadcn Card/Button-based `Contact` section with a prominent mailto email, lucide social buttons (LinkedIn/GitHub) matching the footer links, added a lightweight placeholder pointing-down SVG in `public/images/icons/`, and rendered the section on the home page for immediate verification.
 
 ### Assemble Home Page
-- [ ] 3.4.1 Update `frontend/src/app/page.tsx` to import Hero component
-- [ ] 3.4.2 Update `frontend/src/app/page.tsx` to import About component
-- [ ] 3.4.3 Update `frontend/src/app/page.tsx` to import Contact component
-- [ ] 3.4.4 Render Hero, About, Contact in vertical flow
-- [ ] 3.4.5 Add smooth scrolling CSS (`html { scroll-behavior: smooth; }`)
+- [x] 3.4.1 Update `frontend/src/app/page.tsx` to import Hero component
+- [x] 3.4.2 Update `frontend/src/app/page.tsx` to import About component
+- [x] 3.4.3 Update `frontend/src/app/page.tsx` to import Contact component
+- [x] 3.4.4 Render Hero, About, Contact in vertical flow
+- [x] 3.4.5 Add smooth scrolling CSS (`html { scroll-behavior: smooth; }`)
+
+Developer note: Assembled the full home page by rendering the existing shadcn-based `Hero`, `About`, and `Contact` sections in a single vertical flow and enabled smooth scrolling globally via `globals.css` so header/CTA hash links scroll cleanly.
+
+TODO:
+- Review the look and feel of the home page.
+- Why do we need to make an interface export and a workexperience export in profile.ts?
+- There are no margins on the left-hand side of the website. be seen by all of the text of the hero section and my name of the header being completely on the left side.
+- Footer is too high.
+- I want the page to be in dark mode, not in light mode. Preferably there should also be a toggle.
+- The scrole from home to about should be fluent.
+- Work experience should be on its own row, not next to education.
+- The images of work experience education should be smaller, most likely.
+- For skills, the arrows are too close on the elements.
+- Each of work experience, skills, certifications, and education should be on its own row.
+- Include the images i want to use
 
 ---
 
