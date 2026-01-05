@@ -64,25 +64,27 @@ Developer note: Added `Footer.tsx` (lucide icons + email + open-source link) and
 Developer note: Installed the stock shadcn `Button` component, created a server `Hero` section with Next `Image` + two CTA buttons, and rendered it on the home page for immediate verification.
 
 ### About Section
-- [ ] 3.2.1 Create `About.tsx` component
-- [ ] 3.2.2 Add `id="about"` to About section for scroll navigation
-- [ ] 3.2.3 Create Work Experience subsection
-- [ ] 3.2.4 Import WorkExperience data from `profile.ts`
-- [ ] 3.2.5 Display work experience using Shadcn Card component
-- [ ] 3.2.6 Create Education subsection
-- [ ] 3.2.7 Import Education data from `profile.ts`
-- [ ] 3.2.8 Display education using card layout
-- [ ] 3.2.9 Create Certifications subsection
-- [ ] 3.2.10 Use Shadcn Accordion or Dialog for certifications
-- [ ] 3.2.11 Import Certification data from `profile.ts`
-- [ ] 3.2.12 Display certification details on interaction
-- [ ] 3.2.13 Create Skills subsection
-- [ ] 3.2.14 Use Shadcn Carousel for skills display
-- [ ] 3.2.15 Import Skill data from `profile.ts`
-- [ ] 3.2.16 Display skills with lucide-react icons
-- [ ] 3.2.17 Add Resume Download button with Download icon
-- [ ] 3.2.18 Link Resume button to `/cv/sammie-knoppert-cv.pdf`
-- [ ] 3.2.19 Optimize all images using `next/image`
+- [x] 3.2.1 Create `About.tsx` component
+- [x] 3.2.2 Add `id="about"` to About section for scroll navigation
+- [x] 3.2.3 Create Work Experience subsection
+- [x] 3.2.4 Import WorkExperience data from `profile.ts`
+- [x] 3.2.5 Display work experience using Shadcn Card component
+- [x] 3.2.6 Create Education subsection
+- [x] 3.2.7 Import Education data from `profile.ts`
+- [x] 3.2.8 Display education using card layout
+- [x] 3.2.9 Create Certifications subsection
+- [x] 3.2.10 Use Shadcn Accordion or Dialog for certifications
+- [x] 3.2.11 Import Certification data from `profile.ts`
+- [x] 3.2.12 Display certification details on interaction
+- [x] 3.2.13 Create Skills subsection
+- [x] 3.2.14 Use Shadcn Carousel for skills display
+- [x] 3.2.15 Import Skill data from `profile.ts`
+- [x] 3.2.16 Display skills with lucide-react icons
+- [x] 3.2.17 Add Resume Download button with Download icon
+- [x] 3.2.18 Link Resume button to `/cv/sammie-knoppert-cv.pdf`
+- [x] 3.2.19 Optimize all images using `next/image`
+
+Developer note: Installed shadcn `card`, `accordion`, and `carousel`; built a data-driven `About` section rendering Work/Education as Cards, Certifications as an Accordion with images, Skills as a Carousel with lucide icons, and a resume download CTA, then wired it into the home page.
 
 ### Contact Section
 - [ ] 3.3.1 Create `Contact.tsx` component
