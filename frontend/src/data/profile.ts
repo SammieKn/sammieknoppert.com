@@ -31,28 +31,36 @@ export interface Skill {
 }
 
 export const workExperience: WorkExperience[] = [
-	{
-		company: "Example Company",
-		role: "Role Title",
-		startDate: "2024-01",
-		endDate: "Present",
-		description:
-			"Short 2–3 sentence description of responsibilities, impact, and tools used.",
-		imageSrc: "/images/avatar/placeholder.svg",
-	},
+  {
+    company: "Example Company",
+    role: "Role Title",
+    startDate: "2024-01",
+    endDate: "Present",
+    description:
+      "Short 2–3 sentence description of responsibilities, impact, and tools used.",
+    imageSrc: "/images/avatar/placeholder.svg",
+  },
+  {
+    company: "Arcadis",
+    role: "Data scientist",
+    startDate: "2023-01",
+    endDate: "2024-01",
+    description: "I love coding, thats it..",
+    imageSrc: "/images/avatar/placeholder.svg",
+  },
 ];
 
 export const education: Education[] = [
-	{
-		title: "Degree / Program",
-		level: "BSc / MSc",
-		year: "2023",
-		university: "University Name",
-		grade: "Optional grade",
-		description:
-			"Short description of focus area, notable projects, and achievements.",
-		imageSrc: "/images/avatar/placeholder.svg",
-	},
+  {
+    title: "Degree / Program",
+    level: "BSc / MSc",
+    year: "2023",
+    university: "University Name",
+    grade: "Optional grade",
+    description:
+      "Short description of focus area, notable projects, and achievements.",
+    imageSrc: "/images/avatar/placeholder.svg",
+  },
 ];
 
 export const certifications: Certification[] = [

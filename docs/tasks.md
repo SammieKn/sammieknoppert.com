@@ -87,13 +87,15 @@ Developer note: Installed the stock shadcn `Button` component, created a server 
 Developer note: Installed shadcn `card`, `accordion`, and `carousel`; built a data-driven `About` section rendering Work/Education as Cards, Certifications as an Accordion with images, Skills as a Carousel with lucide icons, and a resume download CTA, then wired it into the home page.
 
 ### Contact Section
-- [ ] 3.3.1 Create `Contact.tsx` component
-- [ ] 3.3.2 Add `id="contact"` to Contact section for scroll navigation
-- [ ] 3.3.3 Add contact message text
-- [ ] 3.3.4 Display email address prominently
-- [ ] 3.3.5 Add social icons (LinkedIn, GitHub) using lucide-react
-- [ ] 3.3.6 Add placeholder for pointing-down icon image
-- [ ] 3.3.7 Style Contact section with clean, minimal design
+- [x] 3.3.1 Create `Contact.tsx` component
+- [x] 3.3.2 Add `id="contact"` to Contact section for scroll navigation
+- [x] 3.3.3 Add contact message text
+- [x] 3.3.4 Display email address prominently
+- [x] 3.3.5 Add social icons (LinkedIn, GitHub) using lucide-react
+- [x] 3.3.6 Add placeholder for pointing-down icon image
+- [x] 3.3.7 Style Contact section with clean, minimal design
+
+Developer note: Created a shadcn Card/Button-based `Contact` section with a prominent mailto email, lucide social buttons (LinkedIn/GitHub) matching the footer links, added a lightweight placeholder pointing-down SVG in `public/images/icons/`, and rendered the section on the home page for immediate verification.
 
 ### Assemble Home Page
 - [ ] 3.4.1 Update `frontend/src/app/page.tsx` to import Hero component
