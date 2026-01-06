@@ -150,18 +150,20 @@ Developer note: Implemented a complete Projects section with a responsive `/proj
 
 ## Phase 5: Navigation & Scroll Behavior
 
-- [ ] 5.1 Add `'use client'` directive to Header component
-- [ ] 5.2 Detect current page using `usePathname()` from `next/navigation`
-- [ ] 5.3 Import `useRouter()` from `next/navigation`
-- [ ] 5.4 Implement scroll-to-section logic for Home, About, Contact when on `/`
-- [ ] 5.5 Use `document.getElementById().scrollIntoView()` for smooth scrolling
-- [ ] 5.6 Implement route-to-home logic for Home, About, Contact when on `/projects/*`
-- [ ] 5.7 Handle hash fragment routing (`/#about`, `/#contact`)
-- [ ] 5.8 Ensure Projects link always routes to `/projects`
-- [ ] 5.9 Test smooth scrolling behavior
-- [ ] 5.10 Test navigation from projects page to home sections
-- [ ] 5.11 Implement mobile menu (hamburger) if needed
-- [ ] 5.12 Test mobile menu functionality
+- [x] 5.1 Add `'use client'` directive to Header component
+- [x] 5.2 Detect current page using `usePathname()` from `next/navigation`
+- [x] 5.3 Import `useRouter()` from `next/navigation`
+- [x] 5.4 Implement scroll-to-section logic for Home, About, Contact when on `/`
+- [x] 5.5 Use `document.getElementById().scrollIntoView()` for smooth scrolling
+- [x] 5.6 Implement route-to-home logic for Home, About, Contact when on `/projects/*`
+- [x] 5.7 Handle hash fragment routing (`/#about`, `/#contact`)
+- [x] 5.8 Ensure Projects link always routes to `/projects`
+- [x] 5.9 Test smooth scrolling behavior
+- [x] 5.10 Test navigation from projects page to home sections
+- [x] 5.11 Implement mobile menu (hamburger) if needed
+- [x] 5.12 Test mobile menu functionality
+
+Developer note: Updated the header navigation to be route-aware: on `/` it smoothly scrolls to the section IDs via `scrollIntoView({ behavior: "smooth" })`, and from `/projects/*` it routes to `/#section` but forces a one-time non-smooth jump so it doesn’t “fake scroll” from the previous page position. Mobile menu tasks were evaluated; the current nav stays as a single-row `NavigationMenu` for now.
 
 ---
 
