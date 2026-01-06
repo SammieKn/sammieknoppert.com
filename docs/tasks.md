@@ -106,55 +106,45 @@ Developer note: Created a shadcn Card/Button-based `Contact` section with a prom
 
 Developer note: Assembled the full home page by rendering the existing shadcn-based `Hero`, `About`, and `Contact` sections in a single vertical flow and enabled smooth scrolling globally via `globals.css` so header/CTA hash links scroll cleanly.
 
-TODO:
-- Review the look and feel of the home page.
-- Why do we need to make an interface export and a workexperience export in profile.ts?
-- There are no margins on the left-hand side of the website. be seen by all of the text of the hero section and my name of the header being completely on the left side.
-- Footer is too high.
-- I want the page to be in dark mode, not in light mode. Preferably there should also be a toggle.
-- The scrole from home to about should be fluent.
-- Work experience should be on its own row, not next to education.
-- The images of work experience education should be smaller, most likely.
-- For skills, the arrows are too close on the elements.
-- Each of work experience, skills, certifications, and education should be on its own row.
-- Include the images i want to use
 
 ---
 
 ## Phase 4: Projects Section
 
 ### Projects Grid Page
-- [ ] 4.1.1 Create `frontend/src/app/projects/` directory
-- [ ] 4.1.2 Create `frontend/src/app/projects/page.tsx`
-- [ ] 4.1.3 Import projects data from `projects.ts`
-- [ ] 4.1.4 Create responsive grid layout using Tailwind grid
-- [ ] 4.1.5 Display project cards with Shadcn Card component
-- [ ] 4.1.6 Add project title to each card
-- [ ] 4.1.7 Add short description to each card
-- [ ] 4.1.8 Add thumbnail image to each card using `next/image`
-- [ ] 4.1.9 Add "Code" link button to each card
-- [ ] 4.1.10 Add "Try" link button to each card
-- [ ] 4.1.11 Add "Read More" button that routes to `/projects/[slug]`
-- [ ] 4.1.12 Style cards with hover effects
-- [ ] 4.1.13 Ensure responsive grid: 1 column (mobile), 2 (tablet), 3 (desktop)
+- [x] 4.1.1 Create `frontend/src/app/projects/` directory
+- [x] 4.1.2 Create `frontend/src/app/projects/page.tsx`
+- [x] 4.1.3 Import projects data from `projects.ts`
+- [x] 4.1.4 Create responsive grid layout using Tailwind grid
+- [x] 4.1.5 Display project cards with Shadcn Card component
+- [x] 4.1.6 Add project title to each card
+- [x] 4.1.7 Add short description to each card
+- [x] 4.1.8 Add thumbnail image to each card using `next/image`
+- [x] 4.1.9 Add "Code" link button to each card
+- [x] 4.1.10 Add "Try" link button to each card
+- [x] 4.1.11 Add "Read More" button that routes to `/projects/[slug]`
+- [x] 4.1.12 Style cards with hover effects
+- [x] 4.1.13 Ensure responsive grid: 1 column (mobile), 2 (tablet), 3 (desktop)
 
 ### Project Detail Page
-- [ ] 4.2.1 Create `frontend/src/app/projects/[slug]/` directory
-- [ ] 4.2.2 Create `frontend/src/app/projects/[slug]/page.tsx`
-- [ ] 4.2.3 Implement dynamic route using slug parameter
-- [ ] 4.2.4 Fetch project data from `projects.ts` by matching slug
-- [ ] 4.2.5 Implement 404 handling for invalid slugs
-- [ ] 4.2.6 Display project title in header
-- [ ] 4.2.7 Display hero image in header
-- [ ] 4.2.8 Add "Problem" section with description
-- [ ] 4.2.9 Add "Approach" section with description
-- [ ] 4.2.10 Add "Execution" section with implementation details
-- [ ] 4.2.11 Add "Business Value" section with outcome description
-- [ ] 4.2.12 Add visuals gallery/screenshots using `next/image`
-- [ ] 4.2.13 Add back button or breadcrumb navigation
-- [ ] 4.2.14 Implement `generateStaticParams` for static generation
-- [ ] 4.2.15 Configure dynamic metadata (title, description) per project
-- [ ] 4.2.16 Apply consistent Shadcn component styling
+- [x] 4.2.1 Create `frontend/src/app/projects/[slug]/` directory
+- [x] 4.2.2 Create `frontend/src/app/projects/[slug]/page.tsx`
+- [x] 4.2.3 Implement dynamic route using slug parameter
+- [x] 4.2.4 Fetch project data from `projects.ts` by matching slug
+- [x] 4.2.5 Implement 404 handling for invalid slugs
+- [x] 4.2.6 Display project title in header
+- [x] 4.2.7 Display hero image in header
+- [x] 4.2.8 Add "Problem" section with description
+- [x] 4.2.9 Add "Approach" section with description
+- [x] 4.2.10 Add "Execution" section with implementation details
+- [x] 4.2.11 Add "Business Value" section with outcome description
+- [x] 4.2.12 Add visuals gallery/screenshots using `next/image`
+- [x] 4.2.13 Add back button or breadcrumb navigation
+- [x] 4.2.14 Implement `generateStaticParams` for static generation
+- [x] 4.2.15 Configure dynamic metadata (title, description) per project
+- [x] 4.2.16 Apply consistent Shadcn component styling
+
+Developer note: Implemented a complete Projects section with a responsive `/projects` grid (shadcn Cards + Buttons, `next/image` thumbnails, and external Code/Try links) and a statically generated `/projects/[slug]` detail page (404 handling, dynamic metadata, Problem/Approach/Execution/Business Value Cards, and a visuals gallery), all backed by the existing `projects.ts` data.
 
 ---
 
@@ -269,6 +259,20 @@ TODO:
 - [ ] 8.19 Write README.md with project description
 
 ---
+
+## Todo's
+TODO:
+- Review the look and feel of the home page.
+- Why do we need to make an interface export and a workexperience export in profile.ts?
+- There are no margins on the left-hand side of the website. be seen by all of the text of the hero section and my name of the header being completely on the left side.
+- I want the page to be in dark mode, not in light mode. Preferably there should also be a toggle.
+- Work experience should be on it s own row, not next to education.
+- The images of work experience education should be smaller, most likely.
+- For skills, the arrows are too close on the elements.
+- Each of work experience, skills, certifications, and education should be on its own row.
+- Include the images i want to use
+- Given I am on a project page in read more, when I click on the Contact section, Then I see a fluent scroll that looks weird.
+- More details about a project should be a .mdx file to make it user friendly to do the editing. No need to define the sections of a project, this is just something for me to keep in mind.
 
 **Total Tasks:** 161
 **Completed:** 0
