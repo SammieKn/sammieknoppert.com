@@ -170,12 +170,20 @@ Developer note: Updated the header navigation to be route-aware: on `/` it smoot
 ## Phase 6: Styling & Responsiveness
 
 ### Global Styles
-- [ ] 6.1.1 Configure Tailwind theme in `globals.css` (colors)
-- [ ] 6.1.2 Configure Tailwind theme in `globals.css` (fonts)
-- [ ] 6.1.3 Configure Tailwind theme in `globals.css` (spacing)
-- [ ] 6.1.4 Add custom Tailwind utilities if needed
-- [ ] 6.1.5 Ensure consistent spacing across components
-- [ ] 6.1.6 Ensure consistent typography across components
+ [x] 6.1.1 Configure Tailwind theme in `globals.css` (colors)
+ [x] 6.1.2 Configure Tailwind theme in `globals.css` (fonts)
+ [x] 6.1.3 Configure Tailwind theme in `globals.css` (spacing)
+ [x] 6.1.4 Add custom Tailwind utilities if needed
+ [x] 6.1.5 Ensure consistent spacing across components
+ [x] 6.1.6 Ensure consistent typography across components
+
+ Developer note: Updated `globals.css` to add heading typography scales, section rhythm, container gutters/max-width (fixing the left-edge flush issue), and anchor offset for the sticky header. Also added a shadcn-style `Avatar` component in `src/components/ui/avatar.tsx` (no new deps) to standardize avatar usage going forward.
+
+### Overhaul About section
+
+-
+
+- I do not think the `avatar.tsx` component is used. If not, please delete it.
 
 ### Responsive Design
 - [ ] 6.2.1 Test Home page on mobile viewport

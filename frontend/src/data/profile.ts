@@ -38,7 +38,7 @@ export const workExperience: WorkExperience[] = [
     endDate: "Present",
     description:
       "Short 2–3 sentence description of responsibilities, impact, and tools used.",
-    imageSrc: "/images/avatar/placeholder.svg",
+    imageSrc: "/images/avatar/avatar_work.png",
   },
   {
     company: "Arcadis",
@@ -46,7 +46,7 @@ export const workExperience: WorkExperience[] = [
     startDate: "2023-01",
     endDate: "2024-01",
     description: "I love coding, thats it..",
-    imageSrc: "/images/avatar/placeholder.svg",
+    imageSrc: "/images/avatar/avatar_work.png",
   },
 ];
 
@@ -59,7 +59,7 @@ export const education: Education[] = [
     grade: "Optional grade",
     description:
       "Short description of focus area, notable projects, and achievements.",
-    imageSrc: "/images/avatar/placeholder.svg",
+    imageSrc: "/images/avatar/avatar_education.png",
   },
 ];
 

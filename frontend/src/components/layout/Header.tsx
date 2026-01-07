@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { Moon, Sun } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -22,6 +24,33 @@ const DISABLE_SMOOTH_SCROLL_ONCE_KEY = "disableSmoothScrollOnce";
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const stored =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    const html = document.documentElement;
+    if (stored === "light") {
+      html.classList.remove("dark");
+      setIsDark(false);
+    } else {
+      html.classList.add("dark");
+      setIsDark(true);
+    }
+  }, []);
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const nextIsDark = !isDark;
+    setIsDark(nextIsDark);
+    if (nextIsDark) {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }
 
   function scrollToSection(sectionId: string, behavior: ScrollBehavior) {
     const element = document.getElementById(sectionId);
@@ -74,6 +103,14 @@ export function Header() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+
+        <button
+          aria-label="Toggle theme"
+          className="ml-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-card text-foreground hover:bg-accent"
+          onClick={toggleTheme}
+        >
+          {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </button>
       </div>
     </header>
   );
