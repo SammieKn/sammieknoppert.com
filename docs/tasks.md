@@ -179,11 +179,24 @@ Developer note: Updated the header navigation to be route-aware: on `/` it smoot
 
  Developer note: Updated `globals.css` to add heading typography scales, section rhythm, container gutters/max-width (fixing the left-edge flush issue), and anchor offset for the sticky header. Also added a shadcn-style `Avatar` component in `src/components/ui/avatar.tsx` (no new deps) to standardize avatar usage going forward.
 
+### General
+- [x] ~~The formatting between the different sections (Home, About, Contact) should show small differences in formatting (e.g. a gradient, a line etc). This provides the user visual feedback that they have changed section~~
+- [x] ~~I do not think the `avatar.tsx` component is used. If not, please delete it.~~
+
 ### Overhaul About section
 
--
+- [x] ~~The divs of Work Experience, Education, Certifications and skills should be full width. So one on each row~~
+- [x] ~~In the div of work experience and education, my avatar should be used just once not for each item in there. There is one image for the entire div. Use the placeholder image for now for the images of my job and education.~~
+- [x] ~~Place the images on the opposite direction, so work experience should have the avatar on the right side and Education onth left side.~~
+- [x] ~~Skills should be a title, one sentence describing the skill and optionally icons below to indicate technologies used. There should be a button more information that, when clicked, opens the card and shows additional information of that skill in text.~~
+- [x] ~~The download resume button should be stand alone and on the right hand side. No need for the card and accopanying text.~~
 
-- I do not think the `avatar.tsx` component is used. If not, please delete it.
+
+### Overhaul contact section
+- [x] ~~I want the order from the top to bottom to be: Contact, "Would love to....", avatar pointing below, email div, socials. The div of my avatar should not have a background so it looks to point towards my email.~~
+- [x] ~~The Contact should be a header and the text below it should be a paragraph. Consistent with the about section~~
+- [x] ~~My contact information should remain within a card as-is and with the text Contact Information~~
+
 
 ### Responsive Design
 - [ ] 6.2.1 Test Home page on mobile viewport
