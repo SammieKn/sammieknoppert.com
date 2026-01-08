@@ -109,24 +109,50 @@ export const workExperience = [
 
 export const education: Education[] = [
   {
-    title: "Degree / Program",
-    level: "BSc / MSc",
+    title: "Civil Engineering (Structural Engineer)",
+    level: "Master of Science - MSc",
     year: "2023",
-    university: "University Name",
-    grade: "Optional grade",
+    university: "Delft University of Technology",
+    grade: "8.1",
     description:
-      "Short description of focus area, notable projects, and achievements.",
+      "Thesis in incorporating climate change within inspection and maintenance planning of engineering structures using AI (Deep Reinforcement Learning), Grade 9. Repository: https://shorturl.at/yIOT9. Key skills: Finite Element Analysis (FEA), Deep Reinforcement Learning.",
+    imageSrc: "/images/avatar/avatar_education.png",
+  },
+  {
+    title: "Built Environment - Specialization: Structural Engineering",
+    level: "Bachelor of Applied Science - BASc",
+    year: "2018",
+    university: "Amsterdam University of Applied Sciences",
+    grade: "8.0 (Cum laude, honors)",
+    description:
+      "Graduated Cum Laude with honors. Contextual skills include Revit and Structural Engineering.",
     imageSrc: "/images/avatar/avatar_education.png",
   },
 ];
 
 export const certifications: Certification[] = [
   {
-    logoSrc: "/images/avatar/placeholder.svg",
-    title: "Certification Title",
-    date: "2025-06",
-    details: "Optional short details about the certification.",
-    imageSrc: "/images/avatar/placeholder.svg",
+    logoSrc: "",
+    title: "Strategyzer Innovation Training",
+    date: "2025-08",
+    details:
+      "Skills: Business Model Innovation · Business Development. Credential ID: 157920751",
+    imageSrc: "/images/certifications/strategyzer_innovation_training.png",
+  },
+  {
+    logoSrc: "",
+    title: "Microsoft Certified: Azure AI Fundamentals",
+    date: "2024-09",
+    details:
+      "Skills: Artificial Intelligence (AI) · Microsoft Azure. Credential ID: 11449FDF8A210570",
+    imageSrc: "/images/certifications/azure_ai_fundamentals.png",
+  },
+  {
+    logoSrc: "",
+    title: "Microsoft Certified: Azure Fundamentals",
+    date: "2024-06",
+    details: "Skills: Microsoft Azure. Credential ID: C9248A65FC5F024C",
+    imageSrc: "/images/certifications/azure_fundamentals.png",
   },
 ];
 

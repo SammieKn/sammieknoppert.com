@@ -21,10 +21,18 @@ const navItems = [
 
 const DISABLE_SMOOTH_SCROLL_ONCE_KEY = "disableSmoothScrollOnce";
 
+function getInitialTheme() {
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("theme");
+    return stored !== "light";
+  }
+  return true;
+}
+
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(getInitialTheme);
 
   useEffect(() => {
     const stored =
@@ -32,10 +40,8 @@ export function Header() {
     const html = document.documentElement;
     if (stored === "light") {
       html.classList.remove("dark");
-      setIsDark(false);
     } else {
       html.classList.add("dark");
-      setIsDark(true);
     }
   }, []);
 
@@ -64,9 +70,19 @@ export function Header() {
     }
 
     sessionStorage.setItem(DISABLE_SMOOTH_SCROLL_ONCE_KEY, "1");
-    document.documentElement.style.scrollBehavior = "auto";
     router.push(`/#${sectionId}`);
   }
+
+  useEffect(() => {
+    if (sessionStorage.getItem(DISABLE_SMOOTH_SCROLL_ONCE_KEY) === "1") {
+      document.documentElement.style.scrollBehavior = "auto";
+      sessionStorage.removeItem(DISABLE_SMOOTH_SCROLL_ONCE_KEY);
+      // Optionally reset scrollBehavior after navigation
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = "";
+      }, 100);
+    }
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">

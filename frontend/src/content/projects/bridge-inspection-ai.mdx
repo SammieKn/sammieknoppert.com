@@ -1,0 +1,42 @@
+---
+title: Bridge Inspection Assistant
+slug: bridge-inspection-ai
+date: "2025-06-15"
+summary: A prototype that turns inspection notes into structured findings.
+cover: /images/projects/placeholder.svg
+tags:
+  - AI
+  - Civil Engineering
+  - NLP
+links:
+  code: https://github.com/
+  demo: https://example.com/
+---
+
+<Lead>
+A prototype that transforms unstructured inspection notes into consistent, structured reports.
+</Lead>
+
+## The Challenge
+
+Inspection notes are often unstructured, making reporting slow and inconsistent. Engineers spend significant time reformatting findings rather than analyzing them.
+
+## Approach
+
+Model the target report fields and map free-text notes into a consistent schema. The goal was to create a pipeline that understands context and extracts key information automatically.
+
+<Callout title="Key Insight">
+By defining clear output schemas upfront, we could validate results and catch edge cases early in the process.
+</Callout>
+
+## What I Built
+
+Built a small pipeline to parse notes, validate outputs, and generate summaries:
+
+- **Input parser** – Handles various note formats and extracts entities
+- **Schema validator** – Ensures outputs match expected structure
+- **Summary generator** – Creates human-readable report sections
+
+## Results
+
+Faster reporting with more consistent deliverables and fewer manual edits. The prototype demonstrated a 60% reduction in formatting time during initial testing.

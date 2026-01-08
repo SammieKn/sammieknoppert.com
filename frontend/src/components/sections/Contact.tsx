@@ -59,7 +59,7 @@ export function Contact() {
                     </a>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap justify-center gap-3">
                   <Button asChild variant="outline">
                     <a href={links.linkedin} target="_blank" rel="noreferrer">
                       <Linkedin className="mr-2 h-4 w-4" />
