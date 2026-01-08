@@ -1,15 +1,13 @@
-export default async function Home() {
-  // We fetch directly in the Server Component
-  const response = await fetch("http://127.0.0.1:8000/api/hello");
-  const data = await response.json();
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
 
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Portfolio Project</h1>
-      <p className="mt-4 text-xl text-muted-foreground">
-        Backend says:{" "}
-        <span className="text-primary font-mono">{data.message}</span>
-      </p>
+    <main>
+      <Hero />
+      <About />
+      <Contact />
     </main>
   );
 }
