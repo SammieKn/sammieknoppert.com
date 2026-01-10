@@ -2,7 +2,7 @@
 
 > A modern, performant portfolio website showcasing professional experience, projects, and technical expertise — built with Next.js 16 and designed for speed.
 
-[INSERT SCREENSHOT HERE]
+![website screenshot](./public/screenshot_webpage.png)
 
 ---
 
