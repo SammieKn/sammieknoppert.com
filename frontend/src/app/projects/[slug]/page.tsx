@@ -2,6 +2,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft, Code2, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -49,16 +50,33 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   });
 
   return (
-    <main className="py-16 md:py-24">
-      <div className="container max-w-4xl space-y-10">
+    <main className="relative min-h-screen py-16 md:py-24">
+      {/* Background orbs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="animate-float absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl" />
+        <div
+          className="animate-float absolute -right-64 top-1/3 h-[400px] w-[400px] rounded-full bg-accent/5 blur-3xl"
+          style={{ animationDelay: "-4s" }}
+        />
+      </div>
+
+      <div className="container relative max-w-4xl space-y-10">
         {/* Header */}
-        <header className="space-y-6">
-          <Button asChild variant="outline" size="sm">
-            <Link href="/projects">← Back to Projects</Link>
+        <header className="space-y-8">
+          <Button
+            asChild
+            variant="ghost"
+            size="sm"
+            className="group -ml-2 text-muted-foreground hover:text-foreground"
+          >
+            <Link href="/projects">
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
+            </Link>
           </Button>
 
-          <div className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          <div className="space-y-4">
+            <h1 className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl">
               {project.title}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -68,12 +86,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   month: "long",
                 })}
               </time>
-              <span>·</span>
-              <div className="flex flex-wrap gap-1.5">
+              <span className="text-white/20">·</span>
+              <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-muted px-2 py-0.5 text-xs"
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-0.5 text-xs font-medium"
                   >
                     {tag}
                   </span>
@@ -82,16 +100,20 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Cover image */}
-          <div className="overflow-hidden rounded-lg border bg-card">
-            <Image
-              src={project.cover}
-              alt={`${project.title} cover`}
-              width={1600}
-              height={900}
-              className="h-auto w-full"
-              priority
-            />
+          {/* Cover image with glow */}
+          <div className="relative">
+            {/* Glow behind image */}
+            <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-50 blur-2xl" />
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-card shadow-2xl">
+              <Image
+                src={project.cover}
+                alt={`${project.title} cover`}
+                width={1600}
+                height={900}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
           </div>
         </header>
 
@@ -100,14 +122,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Links */}
         {(project.links?.code || project.links?.demo) && (
-          <Card>
+          <Card className="border-white/10 bg-card/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-base">Project Links</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
               {project.links.code && (
-                <Button asChild variant="outline">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white/10 bg-white/5 hover:bg-white/10"
+                >
                   <a href={project.links.code} target="_blank" rel="noreferrer">
+                    <Code2 className="mr-2 h-4 w-4" />
                     View Code
                   </a>
                 </Button>
@@ -115,6 +142,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.links.demo && (
                 <Button asChild>
                   <a href={project.links.demo} target="_blank" rel="noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
                     Live Demo
                   </a>
                 </Button>
