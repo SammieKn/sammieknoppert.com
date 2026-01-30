@@ -20,6 +20,61 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Project Content Management
+
+### MDX Projects
+
+This project uses MDX files for project content located in `src/content/projects/`. To make the content compatible with Cloudflare Workers (which don't support Node.js `fs` module), the project uses a build-time approach:
+
+1. **MDX Files**: Project content is stored as MDX files in `src/content/projects/`
+2. **Build-Time Generation**: Before building, a script (`scripts/generate-projects-manifest.mjs`) reads all MDX files and generates a static JSON manifest at `src/data/projects.json`
+3. **Runtime Loading**: The application imports and uses the JSON manifest instead of reading files at runtime
+
+This approach ensures that:
+- No filesystem access is needed at runtime
+- The site works on Cloudflare Workers and other edge platforms
+- Projects are bundled statically at build time
+- Changes to MDX files are automatically included in the next build
+
+### Adding New Projects
+
+1. Create a new MDX file in `src/content/projects/` with frontmatter:
+
+```mdx
+---
+title: Your Project Title
+slug: your-project-slug
+date: "2025-01-30"
+summary: A brief summary of your project
+cover: /images/projects/your-image.svg
+featured: false
+tags:
+  - Tag1
+  - Tag2
+links:
+  code: https://github.com/...
+  demo: https://example.com/
+---
+
+Your project content goes here...
+```
+
+2. Run the build or dev command (manifest generation happens automatically)
+3. The new project will appear on the projects page
+
+## Deployment
+
+This project is designed to be deployed on Cloudflare Workers using OpenNext for Cloudflare:
+
+```bash
+npm run deploy
+```
+
+The deployment process automatically:
+1. Generates the projects manifest from MDX files
+2. Builds the Next.js application
+3. Deploys to Cloudflare Workers
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
