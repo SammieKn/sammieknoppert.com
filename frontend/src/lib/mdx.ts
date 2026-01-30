@@ -38,17 +38,7 @@ export function getProjectBySlug(slug: string): ProjectMeta | null {
     return null;
   }
 
-  return {
-    title: project.title,
-    slug: project.slug,
-    date: project.date,
-    summary: project.summary,
-    cover: project.cover,
-    tags: project.tags,
-    featured: project.featured,
-    links: project.links,
-    content: project.content,
-  };
+  return { ...project } as ProjectMeta;
 }
 
 /**

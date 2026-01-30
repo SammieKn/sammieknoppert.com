@@ -38,12 +38,11 @@ This approach ensures that:
 
 ### Adding New Projects
 
-1. Create a new MDX file in `src/content/projects/` with frontmatter:
+1. Create a new MDX file in `src/content/projects/` with frontmatter (the filename determines the slug):
 
 ```mdx
 ---
 title: Your Project Title
-slug: your-project-slug
 date: "2025-01-30"
 summary: A brief summary of your project
 cover: /images/projects/your-image.svg
@@ -58,6 +57,8 @@ links:
 
 Your project content goes here...
 ```
+
+**Note**: The slug is automatically derived from the filename. For example, `my-awesome-project.mdx` will have the slug `my-awesome-project`.
 
 2. Run the build or dev command (manifest generation happens automatically)
 3. The new project will appear on the projects page

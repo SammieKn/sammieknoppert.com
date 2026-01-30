@@ -35,10 +35,29 @@ function generateProjectsManifest() {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
 
+    // Validate required fields
+    const requiredFields = [
+      "title",
+      "date",
+      "summary",
+      "cover",
+      "tags",
+    ];
+    const missingFields = requiredFields.filter(
+      (field) => !data[field]
+    );
+
+    if (missingFields.length > 0) {
+      console.error(
+        `❌ Error in ${file}: Missing required fields: ${missingFields.join(", ")}`
+      );
+      process.exit(1);
+    }
+
     return {
-      ...data,
       slug,
       content,
+      ...data,
     };
   });
 
