@@ -1,9 +1,6 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
-// Directory where MDX project files live
-const PROJECTS_DIR = path.join(process.cwd(), "src/content/projects");
+// Import the pre-generated projects manifest
+// This is generated at build time by scripts/generate-projects-manifest.mjs
+import projectsData from "@/data/projects.json";
 
 // Frontmatter schema for projects
 export interface ProjectFrontmatter {
@@ -28,32 +25,29 @@ export interface ProjectMeta extends ProjectFrontmatter {
  * Get all project slugs for static generation
  */
 export function getProjectSlugs(): string[] {
-  if (!fs.existsSync(PROJECTS_DIR)) {
-    return [];
-  }
-  return fs
-    .readdirSync(PROJECTS_DIR)
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""));
+  return projectsData.map((project) => project.slug);
 }
 
 /**
  * Get a single project by slug
  */
 export function getProjectBySlug(slug: string): ProjectMeta | null {
-  const filePath = path.join(PROJECTS_DIR, `${slug}.mdx`);
-
-  if (!fs.existsSync(filePath)) {
+  const project = projectsData.find((p) => p.slug === slug);
+  
+  if (!project) {
     return null;
   }
 
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContent);
-
   return {
-    ...(data as ProjectFrontmatter),
-    slug,
-    content,
+    title: project.title,
+    slug: project.slug,
+    date: project.date,
+    summary: project.summary,
+    cover: project.cover,
+    tags: project.tags,
+    featured: project.featured,
+    links: project.links,
+    content: project.content,
   };
 }
 

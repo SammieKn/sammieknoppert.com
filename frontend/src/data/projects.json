@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Bridge Inspection Assistant",
+    "slug": "bridge-inspection-ai",
+    "date": "2025-06-15",
+    "summary": "A prototype that turns inspection notes into structured findings.",
+    "cover": "/images/projects/placeholder.svg",
+    "featured": true,
+    "tags": [
+      "AI",
+      "Civil Engineering",
+      "NLP"
+    ],
+    "links": {
+      "code": "https://github.com/",
+      "demo": "https://example.com/"
+    },
+    "content": "\n<Lead>\nA prototype that transforms unstructured inspection notes into consistent, structured reports.\n</Lead>\n\n## The Challenge\n\nInspection notes are often unstructured, making reporting slow and inconsistent. Engineers spend significant time reformatting findings rather than analyzing them.\n\n## Approach\n\nModel the target report fields and map free-text notes into a consistent schema. The goal was to create a pipeline that understands context and extracts key information automatically.\n\n<Callout title=\"Key Insight\">\nBy defining clear output schemas upfront, we could validate results and catch edge cases early in the process.\n</Callout>\n\n## What I Built\n\nBuilt a small pipeline to parse notes, validate outputs, and generate summaries:\n\n- **Input parser** – Handles various note formats and extracts entities\n- **Schema validator** – Ensures outputs match expected structure\n- **Summary generator** – Creates human-readable report sections\n\n## Results\n\nFaster reporting with more consistent deliverables and fewer manual edits. The prototype demonstrated a 60% reduction in formatting time during initial testing.\n"
+  },
+  {
+    "title": "MLOps Template",
+    "slug": "mlops-template",
+    "date": "2025-04-10",
+    "summary": "A starter structure for shipping small ML features safely and repeatably.",
+    "cover": "/images/projects/placeholder.svg",
+    "tags": [
+      "MLOps",
+      "Python",
+      "Templates"
+    ],
+    "links": {
+      "code": "https://github.com/"
+    },
+    "content": "\n<Lead>\nA repeatable starter template for taking ML prototypes from notebook to production.\n</Lead>\n\n## The Challenge\n\nMany ML prototypes never reach production due to missing structure and checks. Data scientists build impressive demos, but the path to deployment remains unclear.\n\n## Approach\n\nCreate a repeatable template with clear interfaces and minimal operational overhead. Focus on the 80% of cases rather than building for every edge case.\n\n<Callout title=\"Philosophy\">\nGood defaults beat perfect flexibility. Ship something simple, then iterate.\n</Callout>\n\n## What I Built\n\nOutlined a baseline pipeline with testing hooks and deployment-friendly packaging:\n\n- **Project structure** – Organized folders for data, models, and pipelines\n- **Testing hooks** – Unit tests for transforms, integration tests for pipelines\n- **Deployment config** – Docker + CI templates ready to customize\n\n## Results\n\nShorter time-to-deliver and fewer surprises when moving from demo to production. Teams can clone, customize, and ship within days instead of weeks.\n"
+  },
+  {
+    "title": "Portfolio Content Dashboard",
+    "slug": "supabase-portfolio-dashboard",
+    "date": "2025-05-20",
+    "summary": "A concept for managing portfolio content with a clean data model.",
+    "cover": "/images/projects/placeholder.svg",
+    "tags": [
+      "Supabase",
+      "TypeScript",
+      "Design"
+    ],
+    "links": {
+      "code": "https://github.com/"
+    },
+    "content": "\n<Lead>\nA concept for managing portfolio content through a structured backend, separating content from presentation.\n</Lead>\n\n## The Challenge\n\nUpdating portfolio content directly in code can be error-prone and time-consuming. Every text change requires a deployment, and there's no clear separation between content and code.\n\n## Approach\n\nSeparate content from UI by modeling projects and profile data explicitly. Design schemas that are flexible enough to evolve but structured enough to validate.\n\n<Callout title=\"Design Principle\">\nContent should be editable without touching code. Code should render content without assumptions about its shape.\n</Callout>\n\n## What I Built\n\nDefined schemas, added validation, and designed a predictable content flow:\n\n- **Data models** – TypeScript interfaces matching Supabase tables\n- **Validation layer** – Runtime checks for content integrity\n- **Admin concept** – Simple UI for content updates (design phase)\n\n## Results\n\nContent updates become faster, safer, and easier to maintain over time. The architecture supports future features like drafts, versioning, and preview modes.\n"
+  }
+]
