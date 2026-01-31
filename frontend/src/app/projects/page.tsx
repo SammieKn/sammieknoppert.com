@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Code2, ExternalLink, Star } from "lucide-react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -25,13 +26,25 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen py-16 md:py-24">
       {/* Background orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-float absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-        <div
-          className="animate-float absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-accent/5 blur-3xl"
-          style={{ animationDelay: "-3s" }}
-        />
-      </div>
+      <BackgroundOrbs
+        orbs={[
+          {
+            position: "-left-32 top-1/4",
+            size: "h-96 w-96",
+            gradient: "from-primary/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+          },
+          {
+            position: "-right-32 bottom-1/4",
+            size: "h-96 w-96",
+            gradient: "from-accent/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+            animationDelay: "-3s",
+          },
+        ]}
+      />
 
       <div className="container relative space-y-12">
         {/* Header */}

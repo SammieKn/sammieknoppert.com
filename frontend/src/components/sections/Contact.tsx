@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { Github, Linkedin, Mail } from "lucide-react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,12 +25,18 @@ export function Contact() {
       className="relative overflow-hidden border-t border-white/10 py-16 md:py-24"
     >
       {/* Subtle background effects */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Centered gradient orb behind card */}
-        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent blur-3xl" />
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.01)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
-      </div>
+      <BackgroundOrbs
+        orbs={[
+          {
+            position: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+            size: "h-96 w-96",
+            gradient: "from-primary/10 via-chart-2/5 to-transparent",
+            blur: "blur-3xl",
+          },
+        ]}
+        showGrid
+        gridVariant="subtle"
+      />
 
       <div className="container relative z-10 space-y-6">
         <header className="animate-on-scroll space-y-3">
