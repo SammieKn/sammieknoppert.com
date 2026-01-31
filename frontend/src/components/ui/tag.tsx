@@ -45,8 +45,8 @@ const TagList = React.forwardRef<HTMLDivElement, TagListProps>(
   ({ className, size, tags, ...props }, ref) => {
     return (
       <div ref={ref} className={cn("flex flex-wrap gap-2", className)} {...props}>
-        {tags.map((tag) => (
-          <Tag key={tag} size={size}>
+        {tags.map((tag, index) => (
+          <Tag key={`${tag}-${index}`} size={size}>
             {tag}
           </Tag>
         ))}
