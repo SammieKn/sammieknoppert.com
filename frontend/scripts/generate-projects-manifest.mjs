@@ -54,9 +54,34 @@ function generateProjectsManifest() {
       process.exit(1);
     }
 
+    // Convert custom MDX components to standard markdown
+    let processedContent = content;
+    
+    // Convert <Lead> to emphasized paragraph
+    processedContent = processedContent.replace(
+      /<Lead>([\s\S]*?)<\/Lead>/g,
+      (_, leadContent) => `\n\n${leadContent.trim()}\n\n`
+    );
+    
+    // Convert <Callout> to blockquote with title
+    processedContent = processedContent.replace(
+      /<Callout title="([^"]*)">([\s\S]*?)<\/Callout>/g,
+      (_, title, calloutContent) => {
+        return `\n\n> **${title}**\n>\n${calloutContent.trim().split('\n').map(line => `> ${line}`).join('\n')}\n\n`;
+      }
+    );
+    
+    // Convert <Callout> without title to blockquote
+    processedContent = processedContent.replace(
+      /<Callout>([\s\S]*?)<\/Callout>/g,
+      (_, calloutContent) => {
+        return `\n\n${calloutContent.trim().split('\n').map(line => `> ${line}`).join('\n')}\n\n`;
+      }
+    );
+
     return {
       slug,
-      content,
+      content: processedContent,
       ...data,
     };
   });
