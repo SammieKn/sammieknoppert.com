@@ -31,6 +31,7 @@ export function useTypingEffect(
 
   useEffect(() => {
     const currentText = texts[textIndex];
+    let pauseTimeout: NodeJS.Timeout | undefined;
 
     const timeout = setTimeout(
       () => {
@@ -38,7 +39,7 @@ export function useTypingEffect(
           if (displayText.length < currentText.length) {
             setDisplayText(currentText.slice(0, displayText.length + 1));
           } else {
-            setTimeout(() => setIsDeleting(true), pauseTime);
+            pauseTimeout = setTimeout(() => setIsDeleting(true), pauseTime);
           }
         } else {
           if (displayText.length > 0) {
@@ -52,7 +53,10 @@ export function useTypingEffect(
       isDeleting ? deletingSpeed : typingSpeed
     );
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      if (pauseTimeout) clearTimeout(pauseTimeout);
+    };
   }, [
     displayText,
     isDeleting,
