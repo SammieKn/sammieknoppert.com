@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
       <div className="container relative max-w-4xl space-y-10">
         {/* Header */}
-        <div className="space-y-8">
+        <header className="space-y-8">
           <Button
             asChild
             variant="ghost"
@@ -112,7 +112,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               />
             </div>
           </div>
-        </div>
+        </header>
 
         {/* Markdown Content */}
         <article className="prose prose-invert prose-lg max-w-none space-y-6">

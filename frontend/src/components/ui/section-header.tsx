@@ -8,6 +8,13 @@ interface SectionHeaderProps {
   headingClassName?: string;
 }
 
+/**
+ * SectionHeader component for consistent header styling across sections.
+ *
+ * Features gradient text styling using bg-clip-text with text-transparent.
+ * The combination of these classes makes the background gradient visible
+ * through the transparent text, creating the gradient text effect.
+ */
 export function SectionHeader({
   title,
   subtitle,
