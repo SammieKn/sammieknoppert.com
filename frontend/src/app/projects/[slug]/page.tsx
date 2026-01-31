@@ -84,6 +84,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <span className="text-white/20">·</span>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
+                  // Use 'sm' size with px-3 override for hybrid styling (px-3 py-0.5 font-medium)
                   <Tag key={tag} size="sm" className="px-3 font-medium">
                     {tag}
                   </Tag>
