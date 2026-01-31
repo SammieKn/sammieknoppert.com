@@ -142,8 +142,8 @@ export function Hero() {
               style={{ animationDelay: "0.4s" }}
             >
               I build practical, reliable software that connects real-world
-              engineering challenges with modern AI tooling. Turning complex
-              problems into elegant solutions.
+              engineering challenges with modern AI tooling and automation.
+              Turning complex problems into elegant solutions.
             </p>
           </div>
 
