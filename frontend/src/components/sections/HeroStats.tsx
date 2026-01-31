@@ -29,8 +29,8 @@ export function HeroStats({ stats = defaultStats, animationDelay = "0.6s" }: Her
       className="animate-fade-in-up flex flex-wrap gap-8 pt-4"
       style={{ animationDelay }}
     >
-      {stats.map((stat, index) => (
-        <div key={index} className="space-y-1">
+      {stats.map((stat) => (
+        <div key={`${stat.value}-${stat.label}`} className="space-y-1">
           <p className="text-2xl font-bold text-foreground">{stat.value}</p>
           <p className="text-sm text-muted-foreground">{stat.label}</p>
         </div>

@@ -62,9 +62,9 @@ export function HeroImage({
       </div>
 
       {/* Floating cards */}
-      {floatingCards.map((card, index) => (
+      {floatingCards.map((card) => (
         <div
-          key={index}
+          key={`${card.position}-${card.label}`}
           className={`absolute ${card.position} ${card.animation} rounded-lg border border-white/10 bg-card/90 px-3 py-2 shadow-lg backdrop-blur-sm`}
         >
           <p className="text-xs font-medium text-muted-foreground">
