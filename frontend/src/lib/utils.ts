@@ -15,6 +15,9 @@ export function cn(...inputs: ClassValue[]) {
  * @example
  * formatDate("2024-01-15") // "January 2024"
  * formatDate("2024-01-15", { year: 'numeric', month: 'short', day: 'numeric' }) // "Jan 15, 2024"
+ *
+ * @note Date parsing may be affected by timezone. For ISO date strings (YYYY-MM-DD),
+ * the date is interpreted as UTC midnight, which may shift by one day in local timezones.
  */
 export function formatDate(
   dateStr: string,
