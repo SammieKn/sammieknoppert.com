@@ -52,14 +52,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {
             position: "-left-64 top-0",
             size: "h-[500px] w-[500px]",
-            gradient: "from-primary/5 to-transparent",
+            gradient: "bg-gradient-to-br from-primary/5 to-transparent",
             blur: "blur-3xl",
             animation: "animate-float",
           },
           {
             position: "-right-64 top-1/3",
             size: "h-[400px] w-[400px]",
-            gradient: "from-accent/5 to-transparent",
+            gradient: "bg-gradient-to-br from-accent/5 to-transparent",
             blur: "blur-3xl",
             animation: "animate-float",
             animationDelay: "-4s",

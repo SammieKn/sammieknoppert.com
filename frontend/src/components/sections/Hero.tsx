@@ -15,20 +15,20 @@ function FloatingShapes() {
         {
           position: "-right-32 -top-32",
           size: "h-96 w-96",
-          gradient: "from-primary/20 via-chart-1/10 to-transparent",
+          gradient: "bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent",
           blur: "blur-3xl",
         },
         {
           position: "-bottom-24 -left-24",
           size: "h-72 w-72",
-          gradient: "from-chart-2/15 via-primary/10 to-transparent",
+          gradient: "bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent",
           blur: "blur-3xl",
           animationDelay: "1s",
         },
         {
           position: "right-1/4 top-1/3",
           size: "h-48 w-48",
-          gradient: "from-chart-4/10 to-transparent",
+          gradient: "bg-gradient-to-br from-chart-4/10 to-transparent",
           blur: "blur-2xl",
           animationDelay: "2s",
         },
@@ -51,7 +51,7 @@ function FloatingShapes() {
           size: "h-4 w-4",
           color: "bg-chart-2/20",
           animation: "animate-float",
-          shape: "rotate-45",
+          transform: "rotate-45",
         },
         {
           position: "bottom-[20%] right-[15%]",

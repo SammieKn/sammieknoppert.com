@@ -5,7 +5,7 @@ export type OrbConfig = {
   position: string;
   /** Size classes (e.g., "h-96 w-96") */
   size: string;
-  /** Gradient classes (e.g., "from-primary/20 via-chart-1/10 to-transparent") */
+  /** Full gradient class (e.g., "bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent") */
   gradient: string;
   /** Blur classes (e.g., "blur-3xl") */
   blur: string;
@@ -28,6 +28,8 @@ export type DotConfig = {
   animation: string;
   /** Shape classes (default: "rounded-full") */
   shape?: string;
+  /** Transform classes (e.g., "rotate-45") */
+  transform?: string;
   /** Hide on mobile */
   hideMobile?: boolean;
 };
@@ -69,7 +71,7 @@ export function BackgroundOrbs({
             orb.position,
             orb.size,
             orb.shape || "rounded-full",
-            `bg-gradient-to-br ${orb.gradient}`,
+            orb.gradient,
             orb.blur
           )}
           style={orb.animationDelay ? { animationDelay: orb.animationDelay } : undefined}
@@ -87,6 +89,7 @@ export function BackgroundOrbs({
             dot.color,
             dot.animation,
             dot.shape || "rounded-full",
+            dot.transform,
             dot.hideMobile && "hidden md:block"
           )}
         />

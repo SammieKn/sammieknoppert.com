@@ -30,7 +30,7 @@ export function Contact() {
           {
             position: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             size: "h-96 w-96",
-            gradient: "from-primary/10 via-chart-2/5 to-transparent",
+            gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
             blur: "blur-3xl",
           },
         ]}

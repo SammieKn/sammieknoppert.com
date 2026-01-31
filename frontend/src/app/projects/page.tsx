@@ -31,14 +31,14 @@ export default function ProjectsPage() {
           {
             position: "-left-32 top-1/4",
             size: "h-96 w-96",
-            gradient: "from-primary/5 to-transparent",
+            gradient: "bg-gradient-to-br from-primary/5 to-transparent",
             blur: "blur-3xl",
             animation: "animate-float",
           },
           {
             position: "-right-32 bottom-1/4",
             size: "h-96 w-96",
-            gradient: "from-accent/5 to-transparent",
+            gradient: "bg-gradient-to-br from-accent/5 to-transparent",
             blur: "blur-3xl",
             animation: "animate-float",
             animationDelay: "-3s",

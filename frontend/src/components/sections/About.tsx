@@ -41,13 +41,13 @@ function AboutFloatingShapes() {
         {
           position: "-right-48 -top-48",
           size: "h-96 w-96",
-          gradient: "from-primary/10 via-chart-2/5 to-transparent",
+          gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
           blur: "blur-3xl",
         },
         {
           position: "-bottom-32 -left-32",
           size: "h-64 w-64",
-          gradient: "from-chart-1/8 via-primary/5 to-transparent",
+          gradient: "bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent",
           blur: "blur-3xl",
           animationDelay: "2s",
         },
