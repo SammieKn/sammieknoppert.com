@@ -2,88 +2,75 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
+import { useTypingEffect } from "@/hooks/use-typing-effect";
 
 // Animated floating shapes component
 function FloatingShapes() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Large gradient orb - top right */}
-      <div className="absolute -right-32 -top-32 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent blur-3xl" />
-
-      {/* Medium orb - bottom left */}
-      <div
-        className="absolute -bottom-24 -left-24 h-72 w-72 animate-pulse rounded-full bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent blur-3xl"
-        style={{ animationDelay: "1s" }}
-      />
-
-      {/* Small accent orb */}
-      <div
-        className="absolute right-1/4 top-1/3 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-chart-4/10 to-transparent blur-2xl"
-        style={{ animationDelay: "2s" }}
-      />
-
-      {/* Floating geometric shapes */}
-      <div className="absolute left-[15%] top-[20%] h-3 w-3 animate-float rounded-full bg-primary/30" />
-      <div className="absolute right-[20%] top-[15%] h-2 w-2 animate-float-delayed rounded-full bg-chart-1/40" />
-      <div className="absolute bottom-[30%] left-[10%] h-4 w-4 animate-float rotate-45 bg-chart-2/20" />
-      <div className="absolute bottom-[20%] right-[15%] h-3 w-3 animate-float-delayed rounded-sm bg-chart-4/25" />
-      <div className="absolute left-[30%] top-[60%] h-2 w-2 animate-float rounded-full bg-primary/20" />
-
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
-    </div>
+    <BackgroundOrbs
+      orbs={[
+        {
+          position: "-right-32 -top-32",
+          size: "h-96 w-96",
+          gradient: "bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent",
+          blur: "blur-3xl",
+        },
+        {
+          position: "-bottom-24 -left-24",
+          size: "h-72 w-72",
+          gradient: "bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent",
+          blur: "blur-3xl",
+          animationDelay: "1s",
+        },
+        {
+          position: "right-1/4 top-1/3",
+          size: "h-48 w-48",
+          gradient: "bg-gradient-to-br from-chart-4/10 to-transparent",
+          blur: "blur-2xl",
+          animationDelay: "2s",
+        },
+      ]}
+      dots={[
+        {
+          position: "left-[15%] top-[20%]",
+          size: "h-3 w-3",
+          color: "bg-primary/30",
+          animation: "animate-float",
+        },
+        {
+          position: "right-[20%] top-[15%]",
+          size: "h-2 w-2",
+          color: "bg-chart-1/40",
+          animation: "animate-float-delayed",
+        },
+        {
+          position: "bottom-[30%] left-[10%]",
+          size: "h-4 w-4",
+          color: "bg-chart-2/20",
+          animation: "animate-float",
+          transform: "rotate-45",
+        },
+        {
+          position: "bottom-[20%] right-[15%]",
+          size: "h-3 w-3",
+          color: "bg-chart-4/25",
+          animation: "animate-float-delayed",
+          shape: "rounded-sm",
+        },
+        {
+          position: "left-[30%] top-[60%]",
+          size: "h-2 w-2",
+          color: "bg-primary/20",
+          animation: "animate-float",
+        },
+      ]}
+      showGrid
+      gridVariant="default"
+    />
   );
-}
-
-// Typing animation hook
-function useTypingEffect(
-  texts: string[],
-  typingSpeed = 100,
-  deletingSpeed = 50,
-  pauseTime = 2000
-) {
-  const [displayText, setDisplayText] = useState("");
-  const [textIndex, setTextIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentText = texts[textIndex];
-
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          if (displayText.length < currentText.length) {
-            setDisplayText(currentText.slice(0, displayText.length + 1));
-          } else {
-            setTimeout(() => setIsDeleting(true), pauseTime);
-          }
-        } else {
-          if (displayText.length > 0) {
-            setDisplayText(displayText.slice(0, -1));
-          } else {
-            setIsDeleting(false);
-            setTextIndex((prev) => (prev + 1) % texts.length);
-          }
-        }
-      },
-      isDeleting ? deletingSpeed : typingSpeed
-    );
-
-    return () => clearTimeout(timeout);
-  }, [
-    displayText,
-    isDeleting,
-    textIndex,
-    texts,
-    typingSpeed,
-    deletingSpeed,
-    pauseTime,
-  ]);
-
-  return displayText;
 }
 
 export function Hero() {
