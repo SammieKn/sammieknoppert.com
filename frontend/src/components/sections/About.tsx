@@ -24,6 +24,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { SectionHeader } from "@/components/ui/section-header";
 import {
   certifications,
   education,
@@ -160,17 +161,11 @@ export function About() {
       <AboutFloatingShapes />
 
       <div className="container relative z-10 space-y-10">
-        <header className="animate-on-scroll space-y-3">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
-              About
-            </span>
-          </h2>
-          <p className="max-w-prose text-muted-foreground">
-            A quick overview of my experience, education, certifications, and
-            skills.
-          </p>
-        </header>
+        <SectionHeader
+          title="About"
+          subtitle="A quick overview of my experience, education, certifications, and skills."
+          className="animate-on-scroll"
+        />
 
         {/* Work Experience: full width row with single avatar on right */}
         <div className="animate-on-scroll grid gap-6 md:grid-cols-[1fr_280px]">
