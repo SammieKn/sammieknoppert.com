@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import { ChevronDown, ChevronUp, Download } from "lucide-react";
-import * as LucideIcons from "lucide-react";
+import { Download } from "lucide-react";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -24,14 +22,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { CollapsibleCard } from "@/components/ui/collapsible-card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SkillIcon } from "@/components/ui/skill-icon";
 import {
   certifications,
   education,
   skills,
   workExperience,
-  type Education,
-  type WorkExperience,
 } from "@/data/profile";
 
 // Subtle floating shapes for About section
@@ -42,13 +40,15 @@ function AboutFloatingShapes() {
         {
           position: "-right-48 -top-48",
           size: "h-96 w-96",
-          gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
+          gradient:
+            "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
           blur: "blur-3xl",
         },
         {
           position: "-bottom-32 -left-32",
           size: "h-64 w-64",
-          gradient: "bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent",
+          gradient:
+            "bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent",
           blur: "blur-3xl",
           animationDelay: "2s",
         },
@@ -73,81 +73,6 @@ function AboutFloatingShapes() {
   );
 }
 
-function SkillIcon({ iconName }: { iconName: string }) {
-  const Icon = (
-    LucideIcons as unknown as Record<
-      string,
-      React.ComponentType<{ className?: string }>
-    >
-  )[iconName];
-
-  if (!Icon) {
-    return <LucideIcons.CircleHelp className="h-5 w-5 text-muted-foreground" />;
-  }
-
-  return <Icon className="h-5 w-5" />;
-}
-
-interface CollapsibleExperienceCardProps {
-  title: string;
-  description: string;
-  items: WorkExperience[] | Education[];
-  isExpanded: boolean;
-  onToggle: () => void;
-  renderItem: (
-    item: WorkExperience | Education,
-    index: number
-  ) => React.ReactNode;
-}
-
-function CollapsibleExperienceCard({
-  title,
-  description,
-  items,
-  isExpanded,
-  onToggle,
-  renderItem,
-}: CollapsibleExperienceCardProps) {
-  return (
-    <Card className="border-white/10 bg-card/50 backdrop-blur-sm transition-all hover:bg-card/70">
-      <CardHeader>
-        <CardTitle className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
-          {title}
-        </CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div
-          className={`space-y-3 overflow-hidden transition-all duration-500 ease-in-out ${
-            isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          {items.map((item, index) => renderItem(item, index))}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button
-          variant="outline"
-          onClick={onToggle}
-          className="w-full border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
-        >
-          {isExpanded ? (
-            <>
-              <ChevronUp className="mr-2 h-4 w-4" />
-              Hide {title.toLowerCase()}
-            </>
-          ) : (
-            <>
-              <ChevronDown className="mr-2 h-4 w-4" />
-              Show {title.toLowerCase()}
-            </>
-          )}
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-}
-
 export function About() {
   const [showWorkExp, setShowWorkExp] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
@@ -169,44 +94,39 @@ export function About() {
 
         {/* Work Experience: full width row with single avatar on right */}
         <div className="animate-on-scroll grid gap-6 md:grid-cols-[1fr_280px]">
-          <CollapsibleExperienceCard
+          <CollapsibleCard
             title="Work Experience"
             description="Roles and responsibilities over time."
-            items={workExperience}
             isExpanded={showWorkExp}
             onToggle={() => setShowWorkExp(!showWorkExp)}
-            renderItem={(item) => {
-              const job = item as WorkExperience;
-              return (
-                <div
-                  key={`${job.company}-${job.role}-${job.startDate}`}
-                  className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
-                >
-                  {/* Timeline indicator */}
-                  <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-primary/50 via-chart-2/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          >
+            {workExperience.map((job) => (
+              <div
+                key={`${job.company}-${job.role}-${job.startDate}`}
+                className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
+              >
+                {/* Timeline indicator */}
+                <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-primary/50 via-chart-2/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-1.5 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                          {job.startDate} — {job.endDate}
-                        </span>
-                      </div>
-                      <p className="font-semibold text-foreground">
-                        {job.role}
-                      </p>
-                      <p className="text-sm font-medium text-primary/80">
-                        {job.company}
-                      </p>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {job.description}
-                      </p>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                        {job.startDate} — {job.endDate}
+                      </span>
                     </div>
+                    <p className="font-semibold text-foreground">{job.role}</p>
+                    <p className="text-sm font-medium text-primary/80">
+                      {job.company}
+                    </p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {job.description}
+                    </p>
                   </div>
                 </div>
-              );
-            }}
-          />
+              </div>
+            ))}
+          </CollapsibleCard>
           <div className="hidden items-start justify-end md:flex">
             <div className="relative">
               <div className="absolute -inset-2 rounded-xl bg-gradient-to-br from-primary/10 via-chart-1/5 to-transparent blur-xl" />
@@ -235,48 +155,45 @@ export function About() {
               />
             </div>
           </div>
-          <CollapsibleExperienceCard
+          <CollapsibleCard
             title="Education"
             description="Academic background and focus areas."
-            items={education}
             isExpanded={showEducation}
             onToggle={() => setShowEducation(!showEducation)}
-            renderItem={(item) => {
-              const edu = item as Education;
-              return (
-                <div
-                  key={`${edu.university}-${edu.title}-${edu.year}`}
-                  className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
-                >
-                  {/* Timeline indicator */}
-                  <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-chart-2/50 via-primary/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          >
+            {education.map((edu) => (
+              <div
+                key={`${edu.university}-${edu.title}-${edu.year}`}
+                className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
+              >
+                {/* Timeline indicator */}
+                <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-chart-2/50 via-primary/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-                  <div className="space-y-1.5">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex items-center rounded-full bg-chart-2/10 px-2.5 py-0.5 text-xs font-medium text-chart-2">
-                        {edu.year}
-                      </span>
-                      <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                        {edu.level}
-                      </span>
-                    </div>
-                    <p className="font-semibold text-foreground">{edu.title}</p>
-                    <p className="text-sm font-medium text-primary/80">
-                      {edu.university}
-                    </p>
-                    {edu.grade && (
-                      <p className="text-sm text-muted-foreground">
-                        <span className="font-medium">Grade:</span> {edu.grade}
-                      </p>
-                    )}
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {edu.description}
-                    </p>
+                <div className="space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center rounded-full bg-chart-2/10 px-2.5 py-0.5 text-xs font-medium text-chart-2">
+                      {edu.year}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                      {edu.level}
+                    </span>
                   </div>
+                  <p className="font-semibold text-foreground">{edu.title}</p>
+                  <p className="text-sm font-medium text-primary/80">
+                    {edu.university}
+                  </p>
+                  {edu.grade && (
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium">Grade:</span> {edu.grade}
+                    </p>
+                  )}
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {edu.description}
+                  </p>
                 </div>
-              );
-            }}
-          />
+              </div>
+            ))}
+          </CollapsibleCard>
         </div>
 
         {/* Certifications: full width carousel */}
@@ -361,7 +278,7 @@ export function About() {
                       size="sm"
                       onClick={() =>
                         setExpandedSkill(
-                          expandedSkill === skill.name ? null : skill.name
+                          expandedSkill === skill.name ? null : skill.name,
                         )
                       }
                       className="border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
