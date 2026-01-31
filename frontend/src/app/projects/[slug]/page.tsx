@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Code2, ExternalLink } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProjectLinks } from "@/components/projects/project-links";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Tag } from "@/components/ui/tag";
 import {
@@ -196,27 +197,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <CardHeader>
               <CardTitle className="text-base">Project Links</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
-              {project.links.code && (
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-white/10 bg-white/5 hover:bg-white/10"
-                >
-                  <a href={project.links.code} target="_blank" rel="noreferrer">
-                    <Code2 className="mr-2 h-4 w-4" />
-                    View Code
-                  </a>
-                </Button>
-              )}
-              {project.links.demo && (
-                <Button asChild>
-                  <a href={project.links.demo} target="_blank" rel="noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </a>
-                </Button>
-              )}
+            <CardContent>
+              <ProjectLinks
+                links={project.links}
+                variant="default"
+                primaryDemo
+              />
             </CardContent>
           </Card>
         )}
