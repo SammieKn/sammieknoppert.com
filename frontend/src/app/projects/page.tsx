@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,6 +13,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/projects/project-links";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TagList } from "@/components/ui/tag";
 import { getFeaturedProject, getOtherProjects } from "@/lib/mdx";
 
 export const metadata = {
@@ -26,24 +29,33 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen py-16 md:py-24">
       {/* Background orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-float absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-        <div
-          className="animate-float absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-accent/5 blur-3xl"
-          style={{ animationDelay: "-3s" }}
-        />
-      </div>
+      <BackgroundOrbs
+        orbs={[
+          {
+            position: "-left-32 top-1/4",
+            size: "h-96 w-96",
+            gradient: "bg-gradient-to-br from-primary/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+          },
+          {
+            position: "-right-32 bottom-1/4",
+            size: "h-96 w-96",
+            gradient: "bg-gradient-to-br from-accent/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+            animationDelay: "-3s",
+          },
+        ]}
+      />
 
       <div className="container relative space-y-12">
         {/* Header */}
-        <header className="space-y-3">
-          <h1 className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl">
-            Projects
-          </h1>
-          <p className="max-w-prose text-muted-foreground">
-            A selection of projects and experiments.
-          </p>
-        </header>
+        <SectionHeader
+          as="h1"
+          title="Projects"
+          subtitle="A selection of projects and experiments."
+        />
 
         {/* Featured Project */}
         {featured && (
@@ -85,16 +97,7 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {featured.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <TagList tags={featured.tags} size="md" />
 
                   {/* Links */}
                   <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -153,16 +156,7 @@ export default function ProjectsPage() {
                   </CardHeader>
 
                   <CardContent>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    <TagList tags={project.tags} size="sm" className="gap-1.5" />
                   </CardContent>
 
                   <CardFooter className="mt-auto flex items-center justify-between gap-2">

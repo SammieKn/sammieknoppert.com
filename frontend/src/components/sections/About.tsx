@@ -7,6 +7,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp, Download } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,6 +24,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { SectionHeader } from "@/components/ui/section-header";
 import {
   certifications,
   education,
@@ -35,18 +37,39 @@ import {
 // Subtle floating shapes for About section
 function AboutFloatingShapes() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Subtle gradient orb - top right */}
-      <div className="absolute -right-48 -top-48 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent blur-3xl" />
-      {/* Small orb - bottom left */}
-      <div
-        className="absolute -bottom-32 -left-32 h-64 w-64 animate-pulse rounded-full bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent blur-3xl"
-        style={{ animationDelay: "2s" }}
-      />
-      {/* Floating dots - hidden on mobile */}
-      <div className="absolute right-[10%] top-[30%] hidden h-2 w-2 animate-float rounded-full bg-primary/20 md:block" />
-      <div className="absolute bottom-[40%] left-[5%] hidden h-2 w-2 animate-float-delayed rounded-full bg-chart-2/15 md:block" />
-    </div>
+    <BackgroundOrbs
+      orbs={[
+        {
+          position: "-right-48 -top-48",
+          size: "h-96 w-96",
+          gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
+          blur: "blur-3xl",
+        },
+        {
+          position: "-bottom-32 -left-32",
+          size: "h-64 w-64",
+          gradient: "bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent",
+          blur: "blur-3xl",
+          animationDelay: "2s",
+        },
+      ]}
+      dots={[
+        {
+          position: "right-[10%] top-[30%]",
+          size: "h-2 w-2",
+          color: "bg-primary/20",
+          animation: "animate-float",
+          hideMobile: true,
+        },
+        {
+          position: "bottom-[40%] left-[5%]",
+          size: "h-2 w-2",
+          color: "bg-chart-2/15",
+          animation: "animate-float-delayed",
+          hideMobile: true,
+        },
+      ]}
+    />
   );
 }
 
@@ -138,17 +161,11 @@ export function About() {
       <AboutFloatingShapes />
 
       <div className="container relative z-10 space-y-10">
-        <header className="animate-on-scroll space-y-3">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
-              About
-            </span>
-          </h2>
-          <p className="max-w-prose text-muted-foreground">
-            A quick overview of my experience, education, certifications, and
-            skills.
-          </p>
-        </header>
+        <SectionHeader
+          title="About"
+          subtitle="A quick overview of my experience, education, certifications, and skills."
+          className="animate-on-scroll"
+        />
 
         {/* Work Experience: full width row with single avatar on right */}
         <div className="animate-on-scroll grid gap-6 md:grid-cols-[1fr_280px]">
