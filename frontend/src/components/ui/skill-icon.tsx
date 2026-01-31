@@ -14,11 +14,7 @@ export function SkillIcon({ iconName, className }: SkillIconProps) {
   )[iconName];
 
   if (!Icon) {
-    return (
-      <LucideIcons.CircleHelp
-        className={className ?? "h-5 w-5 text-muted-foreground"}
-      />
-    );
+    return <LucideIcons.CircleHelp className={className ?? "h-5 w-5"} />;
   }
 
   return <Icon className={className ?? "h-5 w-5"} />;
