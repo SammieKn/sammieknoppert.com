@@ -5,6 +5,7 @@ import { ArrowLeft, Code2, ExternalLink } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
@@ -47,13 +48,25 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <main className="relative min-h-screen py-16 md:py-24">
       {/* Background orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-float absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl" />
-        <div
-          className="animate-float absolute -right-64 top-1/3 h-[400px] w-[400px] rounded-full bg-accent/5 blur-3xl"
-          style={{ animationDelay: "-4s" }}
-        />
-      </div>
+      <BackgroundOrbs
+        orbs={[
+          {
+            position: "-left-64 top-0",
+            size: "h-[500px] w-[500px]",
+            gradient: "bg-gradient-to-br from-primary/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+          },
+          {
+            position: "-right-64 top-1/3",
+            size: "h-[400px] w-[400px]",
+            gradient: "bg-gradient-to-br from-accent/5 to-transparent",
+            blur: "blur-3xl",
+            animation: "animate-float",
+            animationDelay: "-4s",
+          },
+        ]}
+      />
 
       <div className="container relative max-w-4xl space-y-10">
         {/* Header */}
