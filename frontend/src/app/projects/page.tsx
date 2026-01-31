@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Code2, ExternalLink, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ProjectLinks } from "@/components/projects/project-links";
 import { getFeaturedProject, getOtherProjects } from "@/lib/mdx";
 
 export const metadata = {
@@ -97,40 +98,7 @@ export default function ProjectsPage() {
 
                   {/* Links */}
                   <div className="flex flex-wrap items-center gap-3 pt-2">
-                    {featured.links?.code && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="sm"
-                        className="border-white/10 bg-white/5 hover:bg-white/10"
-                      >
-                        <a
-                          href={featured.links.code}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <Code2 className="mr-2 h-4 w-4" />
-                          Code
-                        </a>
-                      </Button>
-                    )}
-                    {featured.links?.demo && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="sm"
-                        className="border-white/10 bg-white/5 hover:bg-white/10"
-                      >
-                        <a
-                          href={featured.links.demo}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo
-                        </a>
-                      </Button>
-                    )}
+                    <ProjectLinks links={featured.links} variant="default" />
                     <Button asChild size="sm" className="ml-auto">
                       <Link href={`/projects/${featured.slug}`}>
                         Read more
@@ -198,42 +166,10 @@ export default function ProjectsPage() {
                   </CardContent>
 
                   <CardFooter className="mt-auto flex items-center justify-between gap-2">
-                    <div className="flex gap-2">
-                      {project.links?.code && (
-                        <Button
-                          asChild
-                          variant="ghost"
-                          size="sm"
-                          className="h-8 w-8 p-0"
-                        >
-                          <a
-                            href={project.links.code}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <Code2 className="h-4 w-4" />
-                            <span className="sr-only">View code</span>
-                          </a>
-                        </Button>
-                      )}
-                      {project.links?.demo && (
-                        <Button
-                          asChild
-                          variant="ghost"
-                          size="sm"
-                          className="h-8 w-8 p-0"
-                        >
-                          <a
-                            href={project.links.demo}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                            <span className="sr-only">View demo</span>
-                          </a>
-                        </Button>
-                      )}
-                    </div>
+                    <ProjectLinks
+                      links={project.links}
+                      variant="compact"
+                    />
                     <Link
                       href={`/projects/${project.slug}`}
                       className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
