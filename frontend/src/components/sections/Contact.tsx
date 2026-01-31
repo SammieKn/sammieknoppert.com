@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { Github, Linkedin, Mail } from "lucide-react";
 
+import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,12 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-const links = {
-  github: "https://github.com/sammieknoppert",
-  linkedin: "https://www.linkedin.com/",
-  email: "hello@sammieknoppert.com",
-} as const;
+import { GITHUB, LINKEDIN, EMAIL } from "@/constants/links";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export function Contact() {
   return (
@@ -24,25 +21,25 @@ export function Contact() {
       className="relative overflow-hidden border-t border-white/10 py-16 md:py-24"
     >
       {/* Subtle background effects */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Centered gradient orb behind card */}
-        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent blur-3xl" />
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.01)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
-      </div>
+      <BackgroundOrbs
+        orbs={[
+          {
+            position: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+            size: "h-96 w-96",
+            gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
+            blur: "blur-3xl",
+          },
+        ]}
+        showGrid
+        gridVariant="subtle"
+      />
 
       <div className="container relative z-10 space-y-6">
-        <header className="animate-on-scroll space-y-3">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
-              Contact
-            </span>
-          </h2>
-          <p className="max-w-prose text-muted-foreground">
-            Would love to connect to share ideas, provide help or to brainstorm.
-            Use the links below.
-          </p>
-        </header>
+        <SectionHeader
+          title="Contact"
+          subtitle="Would love to connect to share ideas, provide help or to brainstorm. Use the links below."
+          className="animate-on-scroll"
+        />
 
         <div className="animate-on-scroll flex justify-center">
           <div className="flex w-full max-w-md flex-col items-center">
@@ -77,10 +74,10 @@ export function Contact() {
                       <Mail className="h-5 w-5" />
                     </div>
                     <a
-                      href={`mailto:${links.email}`}
+                      href={`mailto:${EMAIL}`}
                       className="font-medium transition-colors hover:text-primary"
                     >
-                      {links.email}
+                      {EMAIL}
                     </a>
                   </div>
                 </div>
@@ -92,7 +89,7 @@ export function Contact() {
                     variant="outline"
                     className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
-                    <a href={links.linkedin} target="_blank" rel="noreferrer">
+                    <a href={LINKEDIN} target="_blank" rel="noreferrer">
                       <Linkedin className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
                       LinkedIn
                     </a>
@@ -102,7 +99,7 @@ export function Contact() {
                     variant="outline"
                     className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
-                    <a href={links.github} target="_blank" rel="noreferrer">
+                    <a href={GITHUB} target="_blank" rel="noreferrer">
                       <Github className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
                       GitHub
                     </a>

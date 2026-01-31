@@ -1,36 +1,13 @@
-export interface WorkExperience {
-	company: string;
-	role: string;
-	startDate: string;
-	endDate: string;
-	description: string;
-	imageSrc?: string;
-}
+// Import types for type annotations
+import type { Education, Certification, Skill } from "@/types/profile";
 
-export interface Education {
-	title: string;
-	level: string;
-	year: string;
-	university: string;
-	grade?: string;
-	description: string;
-	imageSrc?: string;
-}
-
-export interface Certification {
-	logoSrc?: string;
-	title: string;
-	date: string;
-	details?: string;
-	imageSrc?: string;
-}
-
-export interface Skill {
-  name: string;
-  iconName: string;
-  summary: string;
-  details: string;
-}
+// Re-export types from the types folder
+export type {
+  WorkExperience,
+  Education,
+  Certification,
+  Skill,
+} from "@/types/profile";
 
 export const workExperience = [
   {
