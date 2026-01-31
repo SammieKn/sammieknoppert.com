@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -29,43 +30,11 @@ const navItems = [
 
 const DISABLE_SMOOTH_SCROLL_ONCE_KEY = "disableSmoothScrollOnce";
 
-function getInitialTheme() {
-  if (typeof window !== "undefined") {
-    const stored = localStorage.getItem("theme");
-    return stored !== "light";
-  }
-  return true;
-}
-
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [isDark, setIsDark] = useState(getInitialTheme);
+  const { isDark, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const stored =
-      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
-    const html = document.documentElement;
-    if (stored === "light") {
-      html.classList.remove("dark");
-    } else {
-      html.classList.add("dark");
-    }
-  }, []);
-
-  function toggleTheme() {
-    const html = document.documentElement;
-    const nextIsDark = !isDark;
-    setIsDark(nextIsDark);
-    if (nextIsDark) {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }
 
   function scrollToSection(sectionId: string, behavior: ScrollBehavior) {
     const element = document.getElementById(sectionId);
