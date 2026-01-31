@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const links = {
   github: "https://github.com/sammieknoppert",
@@ -32,17 +33,11 @@ export function Contact() {
       </div>
 
       <div className="container relative z-10 space-y-6">
-        <header className="animate-on-scroll space-y-3">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text">
-              Contact
-            </span>
-          </h2>
-          <p className="max-w-prose text-muted-foreground">
-            Would love to connect to share ideas, provide help or to brainstorm.
-            Use the links below.
-          </p>
-        </header>
+        <SectionHeader
+          title="Contact"
+          subtitle="Would love to connect to share ideas, provide help or to brainstorm. Use the links below."
+          className="animate-on-scroll"
+        />
 
         <div className="animate-on-scroll flex justify-center">
           <div className="flex w-full max-w-md flex-col items-center">

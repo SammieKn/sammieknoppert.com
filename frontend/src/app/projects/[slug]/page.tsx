@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SectionHeader } from "@/components/ui/section-header";
 import {
   getProjectBySlug,
   getProjectSlugs,
@@ -56,7 +57,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
       <div className="container relative max-w-4xl space-y-10">
         {/* Header */}
-        <header className="space-y-8">
+        <div className="space-y-8">
           <Button
             asChild
             variant="ghost"
@@ -70,9 +71,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </Button>
 
           <div className="space-y-4">
-            <h1 className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl">
-              {project.title}
-            </h1>
+            <SectionHeader
+              as="h1"
+              title={project.title}
+              headingClassName="lg:text-5xl"
+            />
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
               <time dateTime={project.date}>
                 {new Date(project.date).toLocaleDateString("en-US", {
@@ -109,7 +112,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               />
             </div>
           </div>
-        </header>
+        </div>
 
         {/* Markdown Content */}
         <article className="prose prose-invert prose-lg max-w-none space-y-6">

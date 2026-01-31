@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { SectionHeader } from "@/components/ui/section-header";
 import { getFeaturedProject, getOtherProjects } from "@/lib/mdx";
 
 export const metadata = {
@@ -35,14 +36,11 @@ export default function ProjectsPage() {
 
       <div className="container relative space-y-12">
         {/* Header */}
-        <header className="space-y-3">
-          <h1 className="bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl">
-            Projects
-          </h1>
-          <p className="max-w-prose text-muted-foreground">
-            A selection of projects and experiments.
-          </p>
-        </header>
+        <SectionHeader
+          as="h1"
+          title="Projects"
+          subtitle="A selection of projects and experiments."
+        />
 
         {/* Featured Project */}
         {featured && (
