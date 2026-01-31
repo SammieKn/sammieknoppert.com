@@ -9,12 +9,14 @@ type ProjectLinksProps = {
     demo?: string;
   };
   variant?: "default" | "compact";
+  primaryDemo?: boolean;
   className?: string;
 };
 
 export function ProjectLinks({
   links,
   variant = "default",
+  primaryDemo = false,
   className,
 }: ProjectLinksProps) {
   if (!links?.code && !links?.demo) {
@@ -72,9 +74,11 @@ export function ProjectLinks({
       {links.demo && (
         <Button
           asChild
-          variant="outline"
+          variant={primaryDemo ? "default" : "outline"}
           size="sm"
-          className="border-white/10 bg-white/5 hover:bg-white/10"
+          className={
+            primaryDemo ? undefined : "border-white/10 bg-white/5 hover:bg-white/10"
+          }
         >
           <a href={links.demo} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />

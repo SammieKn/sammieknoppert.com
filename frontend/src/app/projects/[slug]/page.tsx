@@ -183,7 +183,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <CardTitle className="text-base">Project Links</CardTitle>
             </CardHeader>
             <CardContent>
-              <ProjectLinks links={project.links} variant="default" />
+              <ProjectLinks
+                links={project.links}
+                variant="default"
+                primaryDemo
+              />
             </CardContent>
           </Card>
         )}
