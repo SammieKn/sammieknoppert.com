@@ -1,25 +1,10 @@
 // Import the pre-generated projects manifest
 // This is generated at build time by scripts/generate-projects-manifest.mjs
 import projectsData from "@/data/projects.json";
+import type { ProjectMeta } from "@/types/project";
 
-// Frontmatter schema for projects
-export interface ProjectFrontmatter {
-  title: string;
-  slug: string;
-  date: string;
-  summary: string;
-  cover: string;
-  tags: string[];
-  featured?: boolean;
-  links?: {
-    code?: string;
-    demo?: string;
-  };
-}
-
-export interface ProjectMeta extends ProjectFrontmatter {
-  content: string;
-}
+// Re-export types from the types folder
+export type { ProjectFrontmatter, ProjectMeta } from "@/types/project";
 
 /**
  * Get all project slugs for static generation
