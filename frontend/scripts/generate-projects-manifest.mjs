@@ -67,7 +67,9 @@ function generateProjectsManifest() {
     processedContent = processedContent.replace(
       /<Callout title="([^"]*)">([\s\S]*?)<\/Callout>/g,
       (_, title, calloutContent) => {
-        return `\n\n> **${title}**\n>\n${calloutContent.trim().split('\n').map(line => `> ${line}`).join('\n')}\n\n`;
+        const lines = calloutContent.trim().split('\n').filter(line => line.trim());
+        const quotedLines = lines.map(line => `> ${line}`).join('\n');
+        return `\n\n> **${title}**\n>\n${quotedLines}\n\n`;
       }
     );
     
@@ -75,7 +77,9 @@ function generateProjectsManifest() {
     processedContent = processedContent.replace(
       /<Callout>([\s\S]*?)<\/Callout>/g,
       (_, calloutContent) => {
-        return `\n\n${calloutContent.trim().split('\n').map(line => `> ${line}`).join('\n')}\n\n`;
+        const lines = calloutContent.trim().split('\n').filter(line => line.trim());
+        const quotedLines = lines.map(line => `> ${line}`).join('\n');
+        return `\n\n${quotedLines}\n\n`;
       }
     );
 
