@@ -10,12 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-const links = {
-  github: "https://github.com/sammieknoppert",
-  linkedin: "https://www.linkedin.com/",
-  email: "hello@sammieknoppert.com",
-} as const;
+import { GITHUB, LINKEDIN, EMAIL } from "@/constants/links";
 
 export function Contact() {
   return (
@@ -77,10 +72,10 @@ export function Contact() {
                       <Mail className="h-5 w-5" />
                     </div>
                     <a
-                      href={`mailto:${links.email}`}
+                      href={`mailto:${EMAIL}`}
                       className="font-medium transition-colors hover:text-primary"
                     >
-                      {links.email}
+                      {EMAIL}
                     </a>
                   </div>
                 </div>
@@ -92,7 +87,7 @@ export function Contact() {
                     variant="outline"
                     className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
-                    <a href={links.linkedin} target="_blank" rel="noreferrer">
+                    <a href={LINKEDIN} target="_blank" rel="noreferrer">
                       <Linkedin className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
                       LinkedIn
                     </a>
@@ -102,7 +97,7 @@ export function Contact() {
                     variant="outline"
                     className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
-                    <a href={links.github} target="_blank" rel="noreferrer">
+                    <a href={GITHUB} target="_blank" rel="noreferrer">
                       <Github className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
                       GitHub
                     </a>
