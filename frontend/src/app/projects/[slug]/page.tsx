@@ -82,7 +82,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 })}
               </time>
               <span className="text-white/20">·</span>
-              <TagList tags={project.tags} size="md" className="text-xs font-medium" />
+              <TagList tags={project.tags} size="md" />
             </div>
           </div>
 
