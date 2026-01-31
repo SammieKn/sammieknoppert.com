@@ -1,11 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
+
+import { HeroImage } from "./HeroImage";
+import { HeroStats } from "./HeroStats";
 
 // Animated floating shapes component
 function FloatingShapes() {
@@ -176,66 +178,14 @@ export function Hero() {
           </div>
 
           {/* Stats/highlights */}
-          <div
-            className="animate-fade-in-up flex flex-wrap gap-8 pt-4"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <div className="space-y-1">
-              <p className="text-2xl font-bold text-foreground">3+</p>
-              <p className="text-sm text-muted-foreground">Years Experience</p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-2xl font-bold text-foreground">10+</p>
-              <p className="text-sm text-muted-foreground">
-                Projects Delivered
-              </p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-2xl font-bold text-foreground">AI + Civil</p>
-              <p className="text-sm text-muted-foreground">Unique Blend</p>
-            </div>
-          </div>
+          <HeroStats />
         </div>
 
         {/* Right: Image with decorations */}
-        <div
-          className="animate-fade-in-up relative mx-auto w-full max-w-md"
-          style={{ animationDelay: "0.3s" }}
-        >
-          {/* Decorative ring */}
-          <div className="absolute -inset-4 animate-spin-slow rounded-full border border-dashed border-primary/20" />
-          <div className="absolute -inset-8 animate-spin-slow-reverse rounded-full border border-dashed border-chart-1/10" />
-
-          {/* Glow effect behind image */}
-          <div className="absolute inset-0 scale-95 rounded-2xl bg-gradient-to-br from-primary/20 via-chart-1/10 to-chart-2/20 blur-2xl" />
-
-          {/* Main image container */}
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-card/80 to-card/40 p-1 shadow-2xl backdrop-blur-sm">
-            <div className="overflow-hidden rounded-xl">
-              <Image
-                src="/images/avatar/avatar_hero.png"
-                alt="Portrait of Sammie Knoppert"
-                width={800}
-                height={800}
-                priority
-                className="h-auto w-full transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-          </div>
-
-          {/* Floating cards */}
-          <div className="absolute -left-6 top-1/4 animate-float rounded-lg border border-white/10 bg-card/90 px-3 py-2 shadow-lg backdrop-blur-sm">
-            <p className="text-xs font-medium text-muted-foreground">
-              Currently at
-            </p>
-            <p className="font-semibold text-foreground">Arcadis</p>
-          </div>
-
-          <div className="absolute -right-4 bottom-1/4 animate-float-delayed rounded-lg border border-white/10 bg-card/90 px-3 py-2 shadow-lg backdrop-blur-sm">
-            <p className="text-xs font-medium text-muted-foreground">Focus</p>
-            <p className="font-semibold text-foreground">AI & Data</p>
-          </div>
-        </div>
+        <HeroImage
+          src="/images/avatar/avatar_hero.png"
+          alt="Portrait of Sammie Knoppert"
+        />
       </div>
 
       {/* Scroll indicator */}
