@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TagList } from "@/components/ui/tag";
 import {
   getProjectBySlug,
   getProjectSlugs,
@@ -81,16 +82,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 })}
               </time>
               <span className="text-white/20">·</span>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-0.5 text-xs font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <TagList tags={project.tags} size="md" className="text-xs font-medium" />
             </div>
           </div>
 

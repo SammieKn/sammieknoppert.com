@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { TagList } from "@/components/ui/tag";
 import { getFeaturedProject, getOtherProjects } from "@/lib/mdx";
 
 export const metadata = {
@@ -84,16 +85,7 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {featured.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <TagList tags={featured.tags} size="md" />
 
                   {/* Links */}
                   <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -185,16 +177,7 @@ export default function ProjectsPage() {
                   </CardHeader>
 
                   <CardContent>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    <TagList tags={project.tags} size="sm" className="gap-1.5" />
                   </CardContent>
 
                   <CardFooter className="mt-auto flex items-center justify-between gap-2">
