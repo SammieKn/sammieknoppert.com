@@ -12,6 +12,7 @@ import {
   getProjectSlugs,
   type ProjectFrontmatter,
 } from "@/lib/mdx";
+import { formatDate } from "@/lib/utils";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -74,12 +75,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.title}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-              <time dateTime={project.date}>
-                {new Date(project.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                })}
-              </time>
+              <time dateTime={project.date}>{formatDate(project.date)}</time>
               <span className="text-white/20">·</span>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
