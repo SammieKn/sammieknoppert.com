@@ -14,16 +14,10 @@ function FloatingShapes() {
       <div className="absolute -right-32 -top-32 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent blur-3xl" />
 
       {/* Medium orb - bottom left */}
-      <div
-        className="absolute -bottom-24 -left-24 h-72 w-72 animate-pulse rounded-full bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent blur-3xl"
-        style={{ animationDelay: "1s" }}
-      />
+      <div className="animation-delay-1000 absolute -bottom-24 -left-24 h-72 w-72 animate-pulse rounded-full bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent blur-3xl" />
 
       {/* Small accent orb */}
-      <div
-        className="absolute right-1/4 top-1/3 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-chart-4/10 to-transparent blur-2xl"
-        style={{ animationDelay: "2s" }}
-      />
+      <div className="animation-delay-2000 absolute right-1/4 top-1/3 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-chart-4/10 to-transparent blur-2xl" />
 
       {/* Floating geometric shapes */}
       <div className="absolute left-[15%] top-[20%] h-3 w-3 animate-float rounded-full bg-primary/30" />
@@ -118,17 +112,11 @@ export function Hero() {
 
           {/* Main heading */}
           <div className="space-y-4">
-            <p
-              className="animate-fade-in-up text-lg font-medium text-muted-foreground"
-              style={{ animationDelay: "0.1s" }}
-            >
+            <p className="animation-delay-100 animate-fade-in-up text-lg font-medium text-muted-foreground">
               Hi, I&apos;m Sammie Knoppert 👋
             </p>
 
-            <h1
-              className="animate-fade-in-up text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-              style={{ animationDelay: "0.2s" }}
-            >
+            <h1 className="animation-delay-200 animate-fade-in-up text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Building the{" "}
               <span className="relative">
                 <span className="bg-gradient-to-r from-primary via-chart-1 to-chart-2 bg-clip-text text-transparent">
@@ -140,18 +128,12 @@ export function Hero() {
             </h1>
 
             {/* Typing effect */}
-            <div
-              className="animate-fade-in-up h-8 text-xl text-muted-foreground md:text-2xl"
-              style={{ animationDelay: "0.3s" }}
-            >
+            <div className="animation-delay-300 animate-fade-in-up h-8 text-xl text-muted-foreground md:text-2xl">
               <span>{typedRole}</span>
               <span className="ml-0.5 inline-block h-6 w-0.5 animate-blink bg-primary" />
             </div>
 
-            <p
-              className="animate-fade-in-up max-w-lg text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
-              style={{ animationDelay: "0.4s" }}
-            >
+            <p className="animation-delay-400 animate-fade-in-up max-w-lg text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
               I build practical, reliable software that connects real-world
               engineering challenges with modern AI tooling. Turning complex
               problems into elegant solutions.
@@ -159,10 +141,7 @@ export function Hero() {
           </div>
 
           {/* CTA Buttons */}
-          <div
-            className="animate-fade-in-up flex flex-wrap gap-4"
-            style={{ animationDelay: "0.5s" }}
-          >
+          <div className="animation-delay-500 animate-fade-in-up flex flex-wrap gap-4">
             <Button
               asChild
               size="lg"
@@ -189,10 +168,7 @@ export function Hero() {
           </div>
 
           {/* Stats/highlights */}
-          <div
-            className="animate-fade-in-up flex flex-wrap gap-8 pt-4"
-            style={{ animationDelay: "0.6s" }}
-          >
+          <div className="animation-delay-600 animate-fade-in-up flex flex-wrap gap-8 pt-4">
             <div className="space-y-1">
               <p className="text-2xl font-bold text-foreground">3+</p>
               <p className="text-sm text-muted-foreground">Years Experience</p>
@@ -211,10 +187,7 @@ export function Hero() {
         </div>
 
         {/* Right: Image with decorations */}
-        <div
-          className="animate-fade-in-up relative mx-auto w-full max-w-md"
-          style={{ animationDelay: "0.3s" }}
-        >
+        <div className="animation-delay-300 animate-fade-in-up relative mx-auto w-full max-w-md">
           {/* Decorative ring */}
           <div className="absolute -inset-4 animate-spin-slow rounded-full border border-dashed border-primary/20" />
           <div className="absolute -inset-8 animate-spin-slow-reverse rounded-full border border-dashed border-chart-1/10" />

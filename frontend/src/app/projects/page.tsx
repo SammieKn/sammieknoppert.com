@@ -27,10 +27,7 @@ export default function ProjectsPage() {
       {/* Background orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="animate-float absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
-        <div
-          className="animate-float absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-accent/5 blur-3xl"
-          style={{ animationDelay: "-3s" }}
-        />
+        <div className="animation-delay-n3000 animate-float absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
       </div>
 
       <div className="container relative space-y-12">

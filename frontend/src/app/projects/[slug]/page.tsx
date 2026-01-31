@@ -48,10 +48,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       {/* Background orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="animate-float absolute -left-64 top-0 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl" />
-        <div
-          className="animate-float absolute -right-64 top-1/3 h-[400px] w-[400px] rounded-full bg-accent/5 blur-3xl"
-          style={{ animationDelay: "-4s" }}
-        />
+        <div className="animation-delay-n4000 animate-float absolute -right-64 top-1/3 h-[400px] w-[400px] rounded-full bg-accent/5 blur-3xl" />
       </div>
 
       <div className="container relative max-w-4xl space-y-10">

@@ -39,10 +39,7 @@ function AboutFloatingShapes() {
       {/* Subtle gradient orb - top right */}
       <div className="absolute -right-48 -top-48 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent blur-3xl" />
       {/* Small orb - bottom left */}
-      <div
-        className="absolute -bottom-32 -left-32 h-64 w-64 animate-pulse rounded-full bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent blur-3xl"
-        style={{ animationDelay: "2s" }}
-      />
+      <div className="animation-delay-2000 absolute -bottom-32 -left-32 h-64 w-64 animate-pulse rounded-full bg-gradient-to-tr from-chart-1/8 via-primary/5 to-transparent blur-3xl" />
       {/* Floating dots - hidden on mobile */}
       <div className="absolute right-[10%] top-[30%] hidden h-2 w-2 animate-float rounded-full bg-primary/20 md:block" />
       <div className="absolute bottom-[40%] left-[5%] hidden h-2 w-2 animate-float-delayed rounded-full bg-chart-2/15 md:block" />
