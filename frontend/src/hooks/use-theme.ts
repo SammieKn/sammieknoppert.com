@@ -14,9 +14,9 @@ export function useTheme() {
   const [isDark, setIsDark] = useState(getInitialTheme);
 
   useEffect(() => {
-    const stored =
-      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
     const html = document.documentElement;
+    const stored = localStorage.getItem("theme");
+    
     if (stored === "light") {
       html.classList.remove("dark");
     } else {
