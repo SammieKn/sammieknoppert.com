@@ -33,7 +33,7 @@ const DISABLE_SMOOTH_SCROLL_ONCE_KEY = "disableSmoothScrollOnce";
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme, mounted } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   function scrollToSection(sectionId: string, behavior: ScrollBehavior) {
@@ -124,7 +124,10 @@ export function Header() {
             onClick={toggleTheme}
           >
             <span className="transition-transform duration-300">
-              {isDark ? (
+              {/* Show consistent icon during SSR, then switch after mount */}
+              {!mounted ? (
+                <Sun className="h-4 w-4" />
+              ) : isDark ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />

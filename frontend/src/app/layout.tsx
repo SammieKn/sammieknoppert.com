@@ -31,6 +31,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Subtle background gradient overlay */}
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-br from-transparent via-primary/[0.02] to-chart-2/[0.03]" />
         <ScrollManager />
         <Header />
         {children}

@@ -3,8 +3,14 @@ export interface WorkExperience {
   role: string;
   startDate: string;
   endDate: string;
+  /** The eye-catching hook sentence displayed prominently */
+  hook: string;
+  /** Full description with markdown support, shown when expanded */
   description: string;
-  imageSrc?: string;
+  /** Path to role-specific avatar image */
+  avatarSrc?: string;
+  /** Tags/skills associated with this role */
+  tags?: string[];
 }
 
 export interface Education {
@@ -13,8 +19,10 @@ export interface Education {
   year: string;
   university: string;
   grade?: string;
+  /** Description with markdown support (links, bold, italic) */
   description: string;
-  imageSrc?: string;
+  /** Path to university/school logo (horizontal format) */
+  logoSrc?: string;
 }
 
 export interface Certification {
@@ -27,7 +35,6 @@ export interface Certification {
 
 export interface Skill {
   name: string;
-  iconName: string;
-  summary: string;
-  details: string;
+  /** URL to the skill icon (can use CDN like Simple Icons) */
+  iconUrl: string;
 }
