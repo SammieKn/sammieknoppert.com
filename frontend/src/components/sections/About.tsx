@@ -184,35 +184,47 @@ export function About() {
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-foreground">Skills</h2>
             <p className="text-sm text-muted-foreground">
-              Tools and technologies I work with.
+              Swipe to explore the tools and technologies I work with.
             </p>
           </div>
-          <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-2">
-              {skills.map((skill) => (
-                <CarouselItem
-                  key={skill.name}
-                  className="basis-1/3 pl-2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
-                >
-                  <div className="group flex flex-col items-center gap-2 rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-all hover:border-primary/30 hover:bg-card hover:shadow-md">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={skill.iconUrl}
-                      alt={skill.name}
-                      width={40}
-                      height={40}
-                      className="h-10 w-10 object-contain transition-transform group-hover:scale-110"
-                    />
-                    <p className="text-center text-xs font-medium text-muted-foreground group-hover:text-foreground">
-                      {skill.name}
-                    </p>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="-left-12 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md" />
-            <CarouselNext className="-right-12 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md" />
-          </Carousel>
+          <div className="relative">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+                dragFree: true,
+                containScroll: "trimSnaps",
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2">
+                {skills.map((skill) => (
+                  <CarouselItem
+                    key={skill.name}
+                    className="basis-1/3 pl-2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
+                  >
+                    <div className="group flex h-28 flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-all hover:border-primary/30 hover:bg-card hover:shadow-md">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={skill.iconUrl}
+                        alt={skill.name}
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 flex-shrink-0 object-contain transition-transform group-hover:scale-110"
+                      />
+                      <p className="text-center text-xs font-medium text-muted-foreground group-hover:text-foreground">
+                        {skill.name}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md md:-left-12" />
+              <CarouselNext className="right-0 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md md:-right-12" />
+            </Carousel>
+            {/* Visual hint: fade edges to show more content */}
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-background to-transparent md:hidden" />
+          </div>
         </div>
 
         {/* Resume button standalone on the right */}
