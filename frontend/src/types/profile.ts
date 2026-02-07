@@ -3,8 +3,14 @@ export interface WorkExperience {
   role: string;
   startDate: string;
   endDate: string;
+  /** The eye-catching hook sentence displayed prominently */
+  hook: string;
+  /** Full description with markdown support, shown when expanded */
   description: string;
-  imageSrc?: string;
+  /** Path to role-specific avatar image */
+  avatarSrc?: string;
+  /** Tags/skills associated with this role */
+  tags?: string[];
 }
 
 export interface Education {
