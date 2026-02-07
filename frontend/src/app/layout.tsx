@@ -17,8 +17,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sammie Knoppert",
-  description: "Portfolio website (Static V1)",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://sammieknoppert.com",
+  ),
+  title: "Sammie Knoppert | Product Owner & Data Scientist",
+  description:
+    "Product Owner and Data Scientist specializing in asset management automation, AI/ML solutions, and data-driven product development. Experience with Python, Databricks, Azure, and LLMs.",
+  keywords: [
+    "Product Owner",
+    "Data Scientist",
+    "Python",
+    "AI",
+    "Machine Learning",
+    "Databricks",
+    "Azure",
+  ],
+  authors: [{ name: "Sammie Knoppert" }],
+  openGraph: {
+    title: "Sammie Knoppert | Product Owner & Data Scientist",
+    description:
+      "Product Owner and Data Scientist specializing in asset management automation and AI/ML solutions.",
+    url: "https://sammieknoppert.com",
+    siteName: "Sammie Knoppert Portfolio",
+    images: [
+      {
+        url: "/images/og-image.png", // You'll need to create this
+        width: 1200,
+        height: 630,
+        alt: "Sammie Knoppert Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sammie Knoppert | Product Owner & Data Scientist",
+    description:
+      "Product Owner and Data Scientist specializing in asset management automation and AI/ML solutions.",
+    images: ["/images/og-image.png"],
+  },
 };
 
 export default function RootLayout({
