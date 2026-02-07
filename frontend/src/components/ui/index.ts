@@ -28,6 +28,7 @@ export {
   CarouselPrevious,
   CarouselNext,
 } from "./carousel";
+export { CollapsibleCard } from "./collapsible-card";
 export {
   NavigationMenu,
   NavigationMenuList,
@@ -39,6 +40,7 @@ export {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
+export { RoleCard } from "./role-card";
 export { SectionHeader } from "./section-header";
 export {
   Sheet,

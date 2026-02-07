@@ -23,6 +23,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CollapsibleCard } from "@/components/ui/collapsible-card";
+import { RoleCard } from "@/components/ui/role-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SkillIcon } from "@/components/ui/skill-icon";
 import {
@@ -74,7 +75,6 @@ function AboutFloatingShapes() {
 }
 
 export function About() {
-  const [showWorkExp, setShowWorkExp] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
 
@@ -92,52 +92,22 @@ export function About() {
           className="animate-on-scroll"
         />
 
-        {/* Work Experience: full width row with single avatar on right */}
-        <div className="animate-on-scroll grid gap-6 md:grid-cols-[1fr_280px]">
-          <CollapsibleCard
-            title="Work Experience"
-            description="Roles and responsibilities over time."
-            isExpanded={showWorkExp}
-            onToggle={() => setShowWorkExp(!showWorkExp)}
-          >
-            {workExperience.map((job) => (
-              <div
-                key={`${job.company}-${job.role}-${job.startDate}`}
-                className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
-              >
-                {/* Timeline indicator */}
-                <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-primary/50 via-chart-2/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                        {job.startDate} — {job.endDate}
-                      </span>
-                    </div>
-                    <p className="font-semibold text-foreground">{job.role}</p>
-                    <p className="text-sm font-medium text-primary/80">
-                      {job.company}
-                    </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {job.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </CollapsibleCard>
-          <div className="hidden items-start justify-end md:flex">
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-xl bg-gradient-to-br from-primary/10 via-chart-1/5 to-transparent blur-xl" />
-              <Image
-                src="/images/avatar/avatar_work.png"
-                alt="Avatar"
-                width={240}
-                height={240}
-                className="relative rounded-lg border border-white/10 shadow-lg"
+        {/* Work Experience: Role Cards */}
+        <div className="animate-on-scroll">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-foreground">My Roles</h2>
+            <p className="text-sm text-muted-foreground">
+              Click to read the full story behind each role.
+            </p>
+          </div>
+          <div className="divide-y divide-white/10">
+            {workExperience.map((role) => (
+              <RoleCard
+                key={`${role.company}-${role.role}-${role.startDate}`}
+                role={role}
+                className="first:border-t-0"
               />
-            </div>
+            ))}
           </div>
         </div>
 
