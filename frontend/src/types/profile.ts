@@ -19,8 +19,10 @@ export interface Education {
   year: string;
   university: string;
   grade?: string;
+  /** Description with markdown support (links, bold, italic) */
   description: string;
-  imageSrc?: string;
+  /** Path to university/school logo (horizontal format) */
+  logoSrc?: string;
 }
 
 export interface Certification {

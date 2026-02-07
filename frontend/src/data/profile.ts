@@ -86,16 +86,15 @@ export const education: Education[] = [
     university: "Delft University of Technology",
     grade: "8.1",
     description:
-      "Thesis in incorporating climate change within inspection and maintenance planning of engineering structures using AI (Deep Reinforcement Learning), Grade 9. Repository: https://shorturl.at/yIOT9. Key skills: Structural Modelling, Deep Reinforcement Learning.",
+      "Thesis in incorporating climate change within inspection and maintenance planning of engineering structures using AI (Deep Reinforcement Learning), Grade 9. [View thesis repository](https://repository.tudelft.nl/record/uuid:95df05a4-cbbe-4d52-8787-7e46071a8765).",
   },
   {
-    title: "Built Environment - Specialization: Structural Engineering",
+    title: "Built Environment (Structural Engineer)",
     level: "Bachelor of Applied Science - BASc",
     year: "2018",
     university: "Amsterdam University of Applied Sciences",
-    grade: "8.0 (Cum laude, honors)",
-    description:
-      "Graduated Cum Laude with honors. Contextual skills include Revit and Structural Engineering.",
+    grade: "8.0 (Cum laude)",
+    description: "Graduated Cum Laude with honors.",
   },
 ];
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Download } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CollapsibleCard } from "@/components/ui/collapsible-card";
 import { RoleCard } from "@/components/ui/role-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SkillIcon } from "@/components/ui/skill-icon";
@@ -75,7 +75,6 @@ function AboutFloatingShapes() {
 }
 
 export function About() {
-  const [showEducation, setShowEducation] = useState(false);
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
 
   return (
@@ -111,59 +110,90 @@ export function About() {
           </div>
         </div>
 
-        {/* Education: full width row with single avatar on left */}
-        <div className="animate-on-scroll grid gap-6 md:grid-cols-[280px_1fr]">
-          <div className="hidden items-start md:flex">
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-xl bg-gradient-to-br from-chart-2/10 via-primary/5 to-transparent blur-xl" />
-              <Image
-                src="/images/avatar/avatar_education.png"
-                alt="Avatar"
-                width={240}
-                height={240}
-                className="relative rounded-lg border border-white/10 shadow-lg"
-              />
-            </div>
+        {/* Education: Two column layout */}
+        <div className="animate-on-scroll">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-foreground">Education</h2>
+            <p className="text-sm text-muted-foreground">
+              Academic background and focus areas.
+            </p>
           </div>
-          <CollapsibleCard
-            title="Education"
-            description="Academic background and focus areas."
-            isExpanded={showEducation}
-            onToggle={() => setShowEducation(!showEducation)}
-          >
+          <div className="grid gap-6 md:grid-cols-2">
             {education.map((edu) => (
               <div
                 key={`${edu.university}-${edu.title}-${edu.year}`}
-                className="group relative rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50"
+                className="group relative rounded-xl border border-white/10 bg-card/50 p-5 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-card/70"
               >
-                {/* Timeline indicator */}
-                <div className="absolute -left-px top-0 h-full w-1 rounded-full bg-gradient-to-b from-chart-2/50 via-primary/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="flex items-start justify-between gap-4">
+                  {/* Content */}
+                  <div className="min-w-0 flex-1">
+                    {/* Title */}
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {edu.title}
+                    </h3>
 
-                <div className="space-y-1.5">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="inline-flex items-center rounded-full bg-chart-2/10 px-2.5 py-0.5 text-xs font-medium text-chart-2">
-                      {edu.year}
-                    </span>
-                    <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                      {edu.level}
-                    </span>
+                    {/* Tags row: Year, Level, University, Grade */}
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <span className="inline-flex items-center rounded-full bg-chart-2/10 px-2.5 py-0.5 text-xs font-medium text-chart-2">
+                        {edu.year}
+                      </span>
+                      <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                        {edu.level}
+                      </span>
+                      <span className="inline-flex items-center rounded-full bg-chart-1/10 px-2.5 py-0.5 text-xs font-medium text-chart-1">
+                        {edu.university}
+                      </span>
+                      {edu.grade && (
+                        <span className="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-bold text-primary">
+                          Grade: {edu.grade}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Description with markdown support */}
+                    <div className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children }) => <>{children}</>,
+                          a: ({ href, children }) => (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {children}
+                            </a>
+                          ),
+                          strong: ({ children }) => (
+                            <strong className="font-semibold text-foreground/90">
+                              {children}
+                            </strong>
+                          ),
+                        }}
+                      >
+                        {edu.description}
+                      </ReactMarkdown>
+                    </div>
                   </div>
-                  <p className="font-semibold text-foreground">{edu.title}</p>
-                  <p className="text-sm font-medium text-primary/80">
-                    {edu.university}
-                  </p>
-                  {edu.grade && (
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Grade:</span> {edu.grade}
-                    </p>
+
+                  {/* University logo on right */}
+                  {edu.logoSrc && (
+                    <div className="hidden shrink-0 sm:block">
+                      <Image
+                        src={edu.logoSrc}
+                        alt={edu.university}
+                        width={100}
+                        height={40}
+                        className="object-contain"
+                      />
+                    </div>
                   )}
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {edu.description}
-                  </p>
                 </div>
               </div>
             ))}
-          </CollapsibleCard>
+          </div>
         </div>
 
         {/* Certifications: full width carousel */}
