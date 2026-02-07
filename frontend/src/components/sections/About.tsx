@@ -2,20 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 import { Download } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -25,13 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import { RoleCard } from "@/components/ui/role-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SkillIcon } from "@/components/ui/skill-icon";
-import {
-  certifications,
-  education,
-  skills,
-  workExperience,
-} from "@/data/profile";
+import { education, skills, workExperience } from "@/data/profile";
 
 // Subtle floating shapes for About section
 function AboutFloatingShapes() {
@@ -75,8 +61,6 @@ function AboutFloatingShapes() {
 }
 
 export function About() {
-  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
-
   return (
     <section
       id="about"
@@ -87,7 +71,7 @@ export function About() {
       <div className="container relative z-10 space-y-10">
         <SectionHeader
           title="About"
-          subtitle="A quick overview of my experience, education, certifications, and skills."
+          subtitle="A quick overview of my experience, education, and skills."
           className="animate-on-scroll"
         />
 
@@ -196,116 +180,41 @@ export function About() {
           </div>
         </div>
 
-        {/* Certifications: full width carousel */}
-        <Card className="animate-on-scroll border-white/10 bg-card/50 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle>Certifications</CardTitle>
-            <CardDescription>
-              Professional certifications and credentials.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Carousel opts={{ align: "start", loop: true }} className="w-full">
-              <CarouselContent>
-                {certifications.map((cert) => (
-                  <CarouselItem
-                    key={cert.title}
-                    className="basis-full sm:basis-1/2 lg:basis-1/3"
-                  >
-                    <div className="h-full p-1">
-                      <Card className="group h-full border-white/10 bg-muted/30 transition-all hover:border-primary/20 hover:bg-muted/50 hover:shadow-lg">
-                        <CardContent className="p-4">
-                          <div className="flex items-start gap-3">
-                            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-card/50 p-1 transition-transform group-hover:scale-105">
-                              <Image
-                                src={
-                                  cert.imageSrc ??
-                                  "/images/avatar/placeholder.svg"
-                                }
-                                alt={`${cert.title} icon`}
-                                width={48}
-                                height={48}
-                                className="h-full w-full object-cover"
-                              />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-medium leading-tight text-foreground">
-                                {cert.title}
-                              </p>
-                              <p className="text-sm text-muted-foreground mt-1">
-                                {cert.date}
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="-left-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
-              <CarouselNext className="-right-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
-            </Carousel>
-          </CardContent>
-        </Card>
-
-        {/* Skills: title + summary + expandable details button */}
-        <Card className="animate-on-scroll border-white/10 bg-card/50 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle>Skills</CardTitle>
-            <CardDescription>Overview with details on demand.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {skills.map((skill) => (
-              <div key={skill.name} className="space-y-2">
-                <div className="group rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <SkillIcon iconName={skill.iconName} />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-foreground">
-                        {skill.name}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {skill.summary}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        setExpandedSkill(
-                          expandedSkill === skill.name ? null : skill.name,
-                        )
-                      }
-                      className="border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
-                    >
-                      {expandedSkill === skill.name
-                        ? "Hide details"
-                        : "Details"}
-                    </Button>
-                  </div>
-                </div>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    expandedSkill === skill.name
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
+        {/* Skills: horizontal carousel with icons */}
+        <div className="animate-on-scroll">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-foreground">Skills</h2>
+            <p className="text-sm text-muted-foreground">
+              Tools and technologies I work with.
+            </p>
+          </div>
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-2">
+              {skills.map((skill) => (
+                <CarouselItem
+                  key={skill.name}
+                  className="basis-1/3 pl-2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
                 >
-                  <div className="rounded-lg border border-primary/10 bg-primary/5 p-4">
-                    <p className="text-sm leading-relaxed text-foreground/80">
-                      {skill.details}
+                  <div className="group flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-card/50 p-4 transition-all hover:border-primary/20 hover:bg-card/70">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={skill.iconUrl}
+                      alt={skill.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 object-contain transition-transform group-hover:scale-110"
+                    />
+                    <p className="text-center text-xs font-medium text-muted-foreground group-hover:text-foreground">
+                      {skill.name}
                     </p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
+            <CarouselNext className="-right-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
+          </Carousel>
+        </div>
 
         {/* Resume button standalone on the right */}
         <div className="animate-on-scroll flex justify-end">

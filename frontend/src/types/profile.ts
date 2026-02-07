@@ -35,7 +35,6 @@ export interface Certification {
 
 export interface Skill {
   name: string;
-  iconName: string;
-  summary: string;
-  details: string;
+  /** URL to the skill icon (can use CDN like Simple Icons) */
+  iconUrl: string;
 }

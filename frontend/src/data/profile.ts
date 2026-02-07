@@ -1,13 +1,8 @@
 // Import types for type annotations
-import type { Education, Certification, Skill } from "@/types/profile";
+import type { Education, Skill } from "@/types/profile";
 
 // Re-export types from the types folder
-export type {
-  WorkExperience,
-  Education,
-  Certification,
-  Skill,
-} from "@/types/profile";
+export type { WorkExperience, Education, Skill } from "@/types/profile";
 
 export const workExperience = [
   {
@@ -98,52 +93,40 @@ export const education: Education[] = [
   },
 ];
 
-export const certifications: Certification[] = [
-  {
-    logoSrc: "",
-    title: "Strategyzer Innovation Training",
-    date: "2025-08",
-    details:
-      "Skills: Business Model Innovation · Business Development. Credential ID: 157920751",
-    imageSrc: "/images/certifications/strategyzer_innovation_training.png",
-  },
-  {
-    logoSrc: "",
-    title: "Microsoft Certified: Azure AI Fundamentals",
-    date: "2024-09",
-    details:
-      "Skills: Artificial Intelligence (AI) · Microsoft Azure. Credential ID: 11449FDF8A210570",
-    imageSrc: "/images/certifications/azure_ai_fundamentals.png",
-  },
-  {
-    logoSrc: "",
-    title: "Microsoft Certified: Azure Fundamentals",
-    date: "2024-06",
-    details: "Skills: Microsoft Azure. Credential ID: C9248A65FC5F024C",
-    imageSrc: "/images/certifications/azure_fundamentals.png",
-  },
-];
-
+// Skills with icons from Simple Icons CDN (https://simpleicons.org)
+// Format: https://cdn.simpleicons.org/{iconslug}/{color}
 export const skills: Skill[] = [
   {
     name: "Python",
-    iconName: "Python",
-    summary: "Production-ready data and backend tooling.",
-    details:
-      "Experienced with data pipelines, ML tooling, testing, packaging, and deployment best practices.",
+    iconUrl: "https://cdn.simpleicons.org/python/3776AB",
   },
   {
-    name: "TypeScript",
-    iconName: "Code",
-    summary: "Robust web apps with strong types.",
-    details:
-      "Next.js App Router, shadcn/ui, Tailwind CSS, and component-driven development for maintainable UIs.",
+    name: "SQL",
+    iconUrl: "https://img.icons8.com/ios-filled/50/ffffff/sql.png",
   },
   {
-    name: "FastAPI",
-    iconName: "Server",
-    summary: "Async APIs with Pydantic v2.",
-    details:
-      "Designing schemas, validation, and clean handlers with uvicorn, auth, and testing in mind.",
+    name: "Power BI",
+    iconUrl: "https://img.icons8.com/fluency/48/power-bi-2021.png",
+  },
+  {
+    name: "Power Automate",
+    iconUrl:
+      "https://img.icons8.com/fluency/48/microsoft-power-automate-2020.png",
+  },
+  {
+    name: "Git",
+    iconUrl: "https://cdn.simpleicons.org/git/F05032",
+  },
+  {
+    name: "Microsoft Fabric",
+    iconUrl: "/images/icons/fabric.png",
+  },
+  {
+    name: "Databricks",
+    iconUrl: "https://cdn.simpleicons.org/databricks/FF3621",
+  },
+  {
+    name: "Azure",
+    iconUrl: "/images/icons/azure.png",
   },
 ];
