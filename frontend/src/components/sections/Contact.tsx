@@ -18,7 +18,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden border-t border-white/10 py-16 md:py-24"
+      className="section-divider relative overflow-hidden py-16 md:py-24"
     >
       {/* Subtle background effects */}
       <BackgroundOrbs
@@ -26,7 +26,8 @@ export function Contact() {
           {
             position: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             size: "h-96 w-96",
-            gradient: "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
+            gradient:
+              "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
             blur: "blur-3xl",
           },
         ]}
@@ -59,7 +60,7 @@ export function Contact() {
             </div>
 
             {/* Contact Card */}
-            <Card className="mt-6 w-full border-white/10 bg-card/50 shadow-xl backdrop-blur-sm">
+            <Card className="mt-6 w-full border-border bg-card shadow-lg backdrop-blur-sm">
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
                 <CardDescription>
@@ -68,7 +69,7 @@ export function Contact() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Email box */}
-                <div className="group rounded-lg border border-white/10 bg-muted/30 p-4 transition-all hover:border-primary/20 hover:bg-muted/50">
+                <div className="group rounded-lg border border-border bg-muted/50 p-4 shadow-sm transition-all hover:border-primary/30 hover:bg-muted/70 hover:shadow-md">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                       <Mail className="h-5 w-5" />
@@ -87,7 +88,7 @@ export function Contact() {
                   <Button
                     asChild
                     variant="outline"
-                    className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
+                    className="group border-border transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
                     <a href={LINKEDIN} target="_blank" rel="noreferrer">
                       <Linkedin className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
@@ -97,7 +98,7 @@ export function Contact() {
                   <Button
                     asChild
                     variant="outline"
-                    className="group border-white/10 transition-all hover:border-primary/30 hover:bg-primary/5"
+                    className="group border-border transition-all hover:border-primary/30 hover:bg-primary/5"
                   >
                     <a href={GITHUB} target="_blank" rel="noreferrer">
                       <Github className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />

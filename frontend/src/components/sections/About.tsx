@@ -64,7 +64,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-white/10 py-16 md:py-24"
+      className="section-divider relative overflow-hidden py-16 md:py-24"
     >
       <AboutFloatingShapes />
 
@@ -83,12 +83,11 @@ export function About() {
               Click to read the full story behind each role.
             </p>
           </div>
-          <div className="divide-y divide-white/10">
+          <div className="space-y-4">
             {workExperience.map((role) => (
               <RoleCard
                 key={`${role.company}-${role.role}-${role.startDate}`}
                 role={role}
-                className="first:border-t-0"
               />
             ))}
           </div>
@@ -106,7 +105,7 @@ export function About() {
             {education.map((edu) => (
               <div
                 key={`${edu.university}-${edu.title}-${edu.year}`}
-                className="group relative rounded-xl border border-white/10 bg-card/50 p-5 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-card/70"
+                className="group relative rounded-xl border border-border bg-card/80 p-5 shadow-sm backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card hover:shadow-md"
               >
                 <div className="flex items-start justify-between gap-4">
                   {/* Content */}
@@ -195,7 +194,7 @@ export function About() {
                   key={skill.name}
                   className="basis-1/3 pl-2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
                 >
-                  <div className="group flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-card/50 p-4 transition-all hover:border-primary/20 hover:bg-card/70">
+                  <div className="group flex flex-col items-center gap-2 rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-all hover:border-primary/30 hover:bg-card hover:shadow-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={skill.iconUrl}
@@ -211,8 +210,8 @@ export function About() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="-left-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
-            <CarouselNext className="-right-12 border-white/10 bg-card/50 backdrop-blur-sm hover:bg-card" />
+            <CarouselPrevious className="-left-12 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md" />
+            <CarouselNext className="-right-12 border-border bg-card shadow-sm backdrop-blur-sm hover:bg-card hover:shadow-md" />
           </Carousel>
         </div>
 

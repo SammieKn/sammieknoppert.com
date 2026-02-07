@@ -42,10 +42,10 @@ export function RoleCard({ role, className }: RoleCardProps) {
   return (
     <div
       className={cn(
-        "group relative border-t border-white/10 bg-transparent py-6 transition-all duration-300",
-        "hover:bg-card/30",
-        isExpanded && "bg-card/20",
-        className
+        "group relative rounded-lg border border-border bg-card/50 p-5 shadow-sm transition-all duration-300",
+        "hover:border-primary/30 hover:bg-card/80 hover:shadow-md",
+        isExpanded && "border-primary/20 bg-card/70 shadow-md",
+        className,
       )}
     >
       <button
@@ -88,7 +88,7 @@ export function RoleCard({ role, className }: RoleCardProps) {
                     key={tag}
                     className={cn(
                       "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium",
-                      getGradientColor(index, role.tags!.length)
+                      getGradientColor(index, role.tags!.length),
                     )}
                   >
                     {tag}
@@ -103,14 +103,10 @@ export function RoleCard({ role, className }: RoleCardProps) {
                 components={{
                   p: ({ children }) => <>{children}</>,
                   em: ({ children }) => (
-                    <em className="not-italic font-semibold">
-                      {children}
-                    </em>
+                    <em className="not-italic font-semibold">{children}</em>
                   ),
                   strong: ({ children }) => (
-                    <strong className="font-bold">
-                      {children}
-                    </strong>
+                    <strong className="font-bold">{children}</strong>
                   ),
                 }}
               >
@@ -140,7 +136,7 @@ export function RoleCard({ role, className }: RoleCardProps) {
               <div
                 className={cn(
                   "relative overflow-hidden transition-all duration-300",
-                  isExpanded ? "mt-3 max-h-[2000px]" : "mt-3 max-h-8"
+                  isExpanded ? "mt-3 max-h-[2000px]" : "mt-3 max-h-8",
                 )}
               >
                 <div className="space-y-3 text-sm leading-relaxed text-muted-foreground">
@@ -170,14 +166,14 @@ export function RoleCard({ role, className }: RoleCardProps) {
               <div
                 className={cn(
                   "mt-2 flex items-center gap-1 text-xs font-medium text-muted-foreground/50 transition-colors",
-                  "group-hover:text-muted-foreground"
+                  "group-hover:text-muted-foreground",
                 )}
               >
                 <span>{isExpanded ? "Show less" : "Read more"}</span>
                 <ChevronDown
                   className={cn(
                     "h-3.5 w-3.5 transition-transform duration-300",
-                    isExpanded && "rotate-180"
+                    isExpanded && "rotate-180",
                   )}
                 />
               </div>

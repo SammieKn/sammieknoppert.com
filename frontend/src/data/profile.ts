@@ -102,7 +102,7 @@ export const skills: Skill[] = [
   },
   {
     name: "SQL",
-    iconUrl: "https://img.icons8.com/ios-filled/50/ffffff/sql.png",
+    iconUrl: "/images/icons/sql.png",
   },
   {
     name: "Power BI",

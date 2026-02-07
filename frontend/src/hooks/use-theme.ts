@@ -2,25 +2,22 @@
 
 import { useEffect, useState } from "react";
 
-function getInitialTheme() {
-  if (typeof window !== "undefined") {
-    const stored = localStorage.getItem("theme");
-    return stored !== "light";
-  }
-  return true;
-}
-
 export function useTheme() {
-  const [isDark, setIsDark] = useState(getInitialTheme);
+  // Start with a consistent value for SSR (dark mode matches the html class="dark")
+  const [isDark, setIsDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const html = document.documentElement;
     const stored = localStorage.getItem("theme");
-    
+
     if (stored === "light") {
       html.classList.remove("dark");
+      setIsDark(false);
     } else {
       html.classList.add("dark");
+      setIsDark(true);
     }
   }, []);
 
@@ -37,5 +34,5 @@ export function useTheme() {
     }
   }
 
-  return { isDark, toggleTheme };
+  return { isDark, toggleTheme, mounted };
 }
