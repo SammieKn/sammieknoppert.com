@@ -1,43 +1,56 @@
----
-title: Bridge Inspection Assistant
-slug: bridge-inspection-ai
-date: "2025-06-15"
-summary: A prototype that turns inspection notes into structured findings.
-cover: /images/projects/placeholder.svg
-featured: true
-tags:
-  - AI
-  - Civil Engineering
-  - NLP
-links:
-  code: https://github.com/
-  demo: https://example.com/
----
-
 <Lead>
-A prototype that transforms unstructured inspection notes into consistent, structured reports.
+  Reduce time from inspection to report by **50%** while increasing inspector safety in high-risk environments.
 </Lead>
 
 ## The Challenge
 
-Inspection notes are often unstructured, making reporting slow and inconsistent. Engineers spend significant time reformatting findings rather than analyzing them.
+Inspection notes are often captured in hazardous environments—next to moving highways, in confined spaces, or near active machinery.
 
-## Approach
+Having performed these inspections myself, I know the frustration and danger involved. When you are standing meters away from speeding traffic, every second you spend looking down at your phone to type descriptions is a second you aren't paying attention to your surroundings.
 
-Model the target report fields and map free-text notes into a consistent schema. The goal was to create a pipeline that understands context and extracts key information automatically.
+Because of this pressure, field notes are often unstructured, brief, or incomplete. This creates a secondary problem: once back in the safety of the office, inspectors spend hours manually reconstructing context and formatting reports.
+
+**The goal:** Minimize screen time in the field (Safety) while maximizing report quality (Efficiency).
+
+## Strategic Approach
+
+We avoided the "Big Bang" development trap. Instead of building a massive, complex system upfront, I led a development strategy focused on **increasing complexity only after proving value.**
+
+As illustrated in the graph below, we started with a simple prototype to test the core hypothesis. By delivering small, iterative updates, we kept the project risk (the downward slope) low, even as the technical complexity (the upward steps) increased.
+
+<ProjectImage
+  src="/images/projects/development-approach.webp"
+  alt="Graph showing the inverse relationship between Risk and Complexity over time using an iterative delivery approach."
+  caption="We prioritized frequent deliveries to validate the solution with specialists, ensuring zero fail costs."
+/>
+
+## The Solution: Context-Aware AI
+
+A generic "Fix my grammar" prompt isn't enough for technical engineering reports. To solve this, I architected a pipeline that utilizes **Few-Shot Prompting** to mimic the specific voice and standards of our senior engineers.
+
+**How it works:**
+1.  **Structured Input:** The inspector selects the specific "Installation Type" (e.g., Concrete Bridge) in the app and enters rough bullet points describing the damage.
+2.  **Context Retrieval:** The API uses that Installation Type to query a database of historical "Gold Standard" reports for that specific asset class.
+3.  **Generative Output:** We feed the LLM the inspector's rough notes *plus* the "Gold Standard" examples. This teaches the model exactly how the final report should look before it generates the text.
+
+**The Stack:**
+* **Backend:** FastAPI & Pydantic (for rigorous data validation)
+* **AI:** OpenAI API (utilizing dynamic few-shot prompting)
 
 <Callout title="Key Insight">
-By defining clear output schemas upfront, we could validate results and catch edge cases early in the process.
+  By injecting "Best Practice" examples into the prompt dynamically, we allow junior inspectors to generate reports that sound like senior specialists.
 </Callout>
-
-## What I Built
-
-Built a small pipeline to parse notes, validate outputs, and generate summaries:
-
-- **Input parser** – Handles various note formats and extracts entities
-- **Schema validator** – Ensures outputs match expected structure
-- **Summary generator** – Creates human-readable report sections
 
 ## Results
 
-Faster reporting with more consistent deliverables and fewer manual edits. The prototype demonstrated a 60% reduction in formatting time during initial testing.
+By integrating this API into our existing tooling, adoption was immediate. The system didn't just save time; it changed the workflow.
+
+* **50% Reduction** in reporting and formatting time.
+* **Increased Safety:** Inspectors spend less time staring at screens in hazardous zones.
+* **Higher Quality:** Seniors now spend their time reviewing technical accuracy rather than correcting grammar.
+
+We are currently scaling this solution to become the standard operating procedure across all project sectors.
+
+<CallToAction>
+  Looking to solve complex workflow problems with low-risk, high-value technical solutions? Let's talk.
+</CallToAction>

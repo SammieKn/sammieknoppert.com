@@ -1,103 +1,83 @@
 /**
- * Build-time script to generate a static JSON manifest from MDX project files.
- * This allows the projects to be bundled at build time instead of reading from
- * the filesystem at runtime (which doesn't work on Cloudflare Workers).
+ * Build-time validation script to ensure projects.json and MDX files are in sync.
+ * Validates that:
+ * 1. Every slug in projects.json has a corresponding MDX file
+ * 2. Every MDX file has a corresponding entry in projects.json
  */
 
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PROJECTS_DIR = path.join(__dirname, "../src/content/projects");
-const OUTPUT_FILE = path.join(__dirname, "../src/data/projects.json");
+const MANIFEST_FILE = path.join(__dirname, "../src/data/projects.json");
 
-function generateProjectsManifest() {
-  console.log("📦 Generating projects manifest...");
+function validateProjectsManifest() {
+  console.log("✓ Validating projects manifest...");
 
-  if (!fs.existsSync(PROJECTS_DIR)) {
-    console.warn("⚠️  Projects directory not found, creating empty manifest");
-    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify([], null, 2));
-    return;
+  // Check if manifest exists
+  if (!fs.existsSync(MANIFEST_FILE)) {
+    console.error("❌ projects.json not found at", MANIFEST_FILE);
+    process.exit(1);
   }
 
-  const files = fs
+  // Check if projects directory exists
+  if (!fs.existsSync(PROJECTS_DIR)) {
+    console.error("❌ Projects directory not found at", PROJECTS_DIR);
+    process.exit(1);
+  }
+
+  // Read manifest
+  const manifestContent = fs.readFileSync(MANIFEST_FILE, "utf-8");
+  const projects = JSON.parse(manifestContent);
+
+  // Get MDX files
+  const mdxFiles = fs
     .readdirSync(PROJECTS_DIR)
-    .filter((file) => file.endsWith(".mdx"));
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => file.replace(/\.mdx$/, ""));
 
-  const projects = files.map((file) => {
-    const slug = file.replace(/\.mdx$/, "");
-    const filePath = path.join(PROJECTS_DIR, file);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
+  // Get slugs from manifest
+  const manifestSlugs = projects.map((p) => p.slug);
 
-    // Validate required fields
-    const requiredFields = [
-      "title",
-      "date",
-      "summary",
-      "cover",
-      "tags",
-    ];
-    const missingFields = requiredFields.filter(
-      (field) => !data[field]
+  // Check for missing MDX files
+  const missingMdxFiles = manifestSlugs.filter(
+    (slug) => !mdxFiles.includes(slug)
+  );
+  if (missingMdxFiles.length > 0) {
+    console.error(
+      `❌ Missing MDX files for slugs: ${missingMdxFiles.join(", ")}`
     );
+    process.exit(1);
+  }
 
+  // Check for orphaned MDX files
+  const orphanedMdxFiles = mdxFiles.filter(
+    (slug) => !manifestSlugs.includes(slug)
+  );
+  if (orphanedMdxFiles.length > 0) {
+    console.error(
+      `❌ MDX files without manifest entries: ${orphanedMdxFiles.join(", ")}`
+    );
+    process.exit(1);
+  }
+
+  // Validate required fields in manifest
+  const requiredFields = ["slug", "title", "date", "summary", "cover", "tags"];
+  projects.forEach((project, index) => {
+    const missingFields = requiredFields.filter((field) => !project[field]);
     if (missingFields.length > 0) {
       console.error(
-        `❌ Error in ${file}: Missing required fields: ${missingFields.join(", ")}`
+        `❌ Project at index ${index} (${project.slug || "unknown"}) is missing: ${missingFields.join(", ")}`
       );
       process.exit(1);
     }
-
-    // Convert custom MDX components to standard markdown
-    let processedContent = content;
-    
-    // Convert <Lead> to emphasized paragraph
-    processedContent = processedContent.replace(
-      /<Lead>([\s\S]*?)<\/Lead>/g,
-      (_, leadContent) => `\n\n${leadContent.trim()}\n\n`
-    );
-    
-    // Convert <Callout> to blockquote with title
-    processedContent = processedContent.replace(
-      /<Callout title="([^"]*)">([\s\S]*?)<\/Callout>/g,
-      (_, title, calloutContent) => {
-        const lines = calloutContent.trim().split('\n').filter(line => line.trim());
-        const quotedLines = lines.map(line => `> ${line}`).join('\n');
-        return `\n\n> **${title}**\n>\n${quotedLines}\n\n`;
-      }
-    );
-    
-    // Convert <Callout> without title to blockquote
-    processedContent = processedContent.replace(
-      /<Callout>([\s\S]*?)<\/Callout>/g,
-      (_, calloutContent) => {
-        const lines = calloutContent.trim().split('\n').filter(line => line.trim());
-        const quotedLines = lines.map(line => `> ${line}`).join('\n');
-        return `\n\n${quotedLines}\n\n`;
-      }
-    );
-
-    return {
-      slug,
-      content: processedContent,
-      ...data,
-    };
   });
 
-  // Ensure output directory exists
-  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-
-  // Write manifest
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(projects, null, 2));
-
-  console.log(`✅ Generated manifest with ${projects.length} projects`);
-  console.log(`   Output: ${OUTPUT_FILE}`);
+  console.log(`✓ Validated ${projects.length} projects successfully`);
 }
 
-generateProjectsManifest();
+validateProjectsManifest();
