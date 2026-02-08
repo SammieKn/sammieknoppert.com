@@ -76,6 +76,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </p>
     ),
 
+    ProjectImage: ({ src, alt }: { src: string; alt: string }) => (
+      <figure className="my-8">
+        <div className="mx-auto max-w-3xl rounded-lg border border-border bg-card p-2 shadow-md">
+          <Image
+            src={src}
+            alt={alt}
+            width={800}
+            height={450}
+            className="h-auto w-full rounded-md"
+          />
+        </div>
+        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+          {alt}
+        </figcaption>
+      </figure>
+    ),
+
     Callout: ({
       title,
       children,

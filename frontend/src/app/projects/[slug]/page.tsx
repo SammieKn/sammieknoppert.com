@@ -102,7 +102,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
                   // Override 'sm' size (px-2 py-0.5) with px-3 and font-medium to achieve original px-3 py-0.5 font-medium styling
-                  <Tag key={`${tag}-${index}`} size="sm" className="px-3 font-medium">
+                  <Tag
+                    key={`${tag}-${index}`}
+                    size="sm"
+                    className="px-3 font-medium"
+                  >
                     {tag}
                   </Tag>
                 ))}
@@ -185,6 +189,48 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   {children}
                 </blockquote>
               ),
+              img: ({ src, alt }) => {
+                // Ensure src is a string
+                const imageSrc = typeof src === "string" ? src : "";
+
+                // Check if this is a ProjectImage (marked with PROJECT_IMAGE:: prefix)
+                const isProjectImage = alt?.startsWith("PROJECT_IMAGE::");
+                const displayAlt =
+                  isProjectImage && alt
+                    ? alt.replace("PROJECT_IMAGE::", "")
+                    : alt || "";
+
+                if (isProjectImage) {
+                  // Render with card styling
+                  return (
+                    <figure className="my-8">
+                      <div className="mx-auto max-w-3xl rounded-lg border border-border bg-card p-2 shadow-md">
+                        <Image
+                          src={imageSrc}
+                          alt={displayAlt}
+                          width={800}
+                          height={450}
+                          className="h-auto w-full rounded-md"
+                        />
+                      </div>
+                      <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+                        {displayAlt}
+                      </figcaption>
+                    </figure>
+                  );
+                }
+
+                // Regular markdown image
+                return (
+                  <Image
+                    src={imageSrc}
+                    alt={displayAlt}
+                    width={1200}
+                    height={675}
+                    className="my-4 h-auto w-full rounded-lg border"
+                  />
+                );
+              },
             }}
           >
             {project.content}

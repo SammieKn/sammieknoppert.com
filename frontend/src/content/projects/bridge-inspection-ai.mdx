@@ -1,26 +1,29 @@
 ---
 title: Bridge Inspection Assistant
 slug: bridge-inspection-ai
-date: "2025-06-15"
-summary: A prototype that turns inspection notes into structured findings.
-cover: /images/projects/placeholder.svg
+date: "2025-10-11"
+summary: Reduce time from inspection to report by 50% using best practices of the past.
+cover: /images/projects/bridge-inspection-assistant.webp
 featured: true
 tags:
   - AI
   - Civil Engineering
-  - NLP
-links:
-  code: https://github.com/
-  demo: https://example.com/
+  - Asset Management
+  - Automation
+# links:
+#   code: https://github.com/
+#   demo: https://example.com/
 ---
 
 <Lead>
-A prototype that transforms unstructured inspection notes into consistent, structured reports.
+Reduce time from inspection to report by 50% using best practices of the past.
 </Lead>
 
 ## The Challenge
 
-Inspection notes are often unstructured, making reporting slow and inconsistent. Engineers spend significant time reformatting findings rather than analyzing them.
+Inspection notes are made in the field under hazardous locations like next to the road or in small areas or next to moving parts.
+These notes are made to capture the condition of an asset. However often they are unstructured and not complete and therefore require manual reporting time once back in the office.
+These notes are also made um outside and the more time the inspector is looking at its phone, less time it spends looking at the structure.
 
 ## Approach
 
@@ -29,6 +32,11 @@ Model the target report fields and map free-text notes into a consistent schema.
 <Callout title="Key Insight">
 By defining clear output schemas upfront, we could validate results and catch edge cases early in the process.
 </Callout>
+
+<ProjectImage
+  src="/images/projects/development-approach.webp"
+  alt="Development approach showing the pipeline"
+/>
 
 ## What I Built
 

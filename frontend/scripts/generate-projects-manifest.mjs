@@ -56,13 +56,19 @@ function generateProjectsManifest() {
 
     // Convert custom MDX components to standard markdown
     let processedContent = content;
-    
+
+    // Convert <ProjectImage> to standard markdown image with special marker
+    processedContent = processedContent.replace(
+      /<ProjectImage\s+src="([^"]+)"\s+alt="([^"]+)"\s*\/>/g,
+      (_, src, alt) => `\n\n![PROJECT_IMAGE::${alt}](${src})\n\n`
+    );
+
     // Convert <Lead> to emphasized paragraph
     processedContent = processedContent.replace(
       /<Lead>([\s\S]*?)<\/Lead>/g,
       (_, leadContent) => `\n\n${leadContent.trim()}\n\n`
     );
-    
+
     // Convert <Callout> to blockquote with title
     processedContent = processedContent.replace(
       /<Callout title="([^"]*)">([\s\S]*?)<\/Callout>/g,
@@ -72,7 +78,7 @@ function generateProjectsManifest() {
         return `\n\n> **${title}**\n>\n${quotedLines}\n\n`;
       }
     );
-    
+
     // Convert <Callout> without title to blockquote
     processedContent = processedContent.replace(
       /<Callout>([\s\S]*?)<\/Callout>/g,
