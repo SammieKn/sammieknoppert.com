@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
 import { Button } from "@/components/ui/button";
@@ -11,18 +9,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/projects/project-links";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Tag } from "@/components/ui/tag";
-import {
-  getProjectBySlug,
-  getProjectSlugs,
-  type ProjectFrontmatter,
-} from "@/lib/mdx";
+import { getProjectBySlug } from "@/lib/mdx";
+import { getMdxContent, getMdxProjectSlugs } from "@/lib/mdx-loader";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return getProjectSlugs().map((slug) => ({ slug }));
+  // Use MDX loader slugs for static generation
+  return getMdxProjectSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -41,9 +37,14 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug } = await params;
+
+  // Get metadata from JSON manifest
   const project = getProjectBySlug(slug);
 
-  if (!project) {
+  // Get MDX content component
+  const MdxContent = await getMdxContent(slug);
+
+  if (!project || !MdxContent) {
     notFound();
   }
 
@@ -131,110 +132,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
         </header>
 
-        {/* Markdown Content */}
+        {/* MDX Content - rendered directly as React component */}
         <article className="prose prose-invert prose-lg max-w-none space-y-6">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h1: ({ children }) => (
-                <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                  {children}
-                </h1>
-              ),
-              h2: ({ children }) => (
-                <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4">
-                  {children}
-                </h2>
-              ),
-              h3: ({ children }) => (
-                <h3 className="text-xl font-semibold tracking-tight mt-6 mb-3">
-                  {children}
-                </h3>
-              ),
-              p: ({ children }) => (
-                <p className="leading-relaxed text-muted-foreground mb-4">
-                  {children}
-                </p>
-              ),
-              ul: ({ children }) => (
-                <ul className="list-disc space-y-2 pl-6 text-muted-foreground mb-4">
-                  {children}
-                </ul>
-              ),
-              ol: ({ children }) => (
-                <ol className="list-decimal space-y-2 pl-6 text-muted-foreground mb-4">
-                  {children}
-                </ol>
-              ),
-              li: ({ children }) => (
-                <li className="leading-relaxed">{children}</li>
-              ),
-              strong: ({ children }) => (
-                <strong className="font-semibold text-foreground">
-                  {children}
-                </strong>
-              ),
-              code: ({ children }) => (
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-                  {children}
-                </code>
-              ),
-              pre: ({ children }) => (
-                <pre className="overflow-x-auto rounded-lg border bg-muted p-4 font-mono text-sm mb-4">
-                  {children}
-                </pre>
-              ),
-              blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">
-                  {children}
-                </blockquote>
-              ),
-              img: ({ src, alt }) => {
-                // Ensure src is a string
-                const imageSrc = typeof src === "string" ? src : "";
-
-                // Check if this is a ProjectImage (marked with PROJECT_IMAGE:: prefix)
-                const isProjectImage = alt?.startsWith("PROJECT_IMAGE::");
-                const displayAlt =
-                  isProjectImage && alt
-                    ? alt.replace("PROJECT_IMAGE::", "")
-                    : alt || "";
-
-                if (isProjectImage) {
-                  // Render with card styling
-                  return (
-                    <figure className="my-8">
-                      <div className="mx-auto max-w-3xl rounded-lg border border-border bg-card p-2 shadow-md">
-                        <Image
-                          src={imageSrc}
-                          alt={displayAlt}
-                          width={800}
-                          height={450}
-                          className="h-auto w-full rounded-md"
-                        />
-                      </div>
-                      <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-                        {displayAlt}
-                      </figcaption>
-                    </figure>
-                  );
-                }
-
-                // Regular markdown image
-                return (
-                  <Image
-                    src={imageSrc}
-                    alt={displayAlt}
-                    width={1200}
-                    height={675}
-                    className="my-4 h-auto w-full rounded-lg border"
-                  />
-                );
-              },
-            }}
-          >
-            {project.content}
-          </ReactMarkdown>
+          <MdxContent />
         </article>
 
         {/* Links */}
