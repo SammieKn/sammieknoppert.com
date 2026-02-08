@@ -26,7 +26,7 @@ export function SectionHeader({
     <header className={cn("space-y-3", className)}>
       <HeadingTag
         className={cn(
-          "bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl",
+          "bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-3xl font-semibold tracking-tight text-transparent md:text-4xl pb-2",
           headingClassName
         )}
       >

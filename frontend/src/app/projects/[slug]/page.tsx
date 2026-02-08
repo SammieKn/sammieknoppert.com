@@ -86,13 +86,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </Link>
           </Button>
 
-          <div className="space-y-4">
+          <div className="space-y-6 mb-8">
             <SectionHeader
               as="h1"
               title={project.title}
               headingClassName="lg:text-5xl"
             />
-            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mt-6">
               <time dateTime={project.date}>
                 {new Date(project.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -102,7 +102,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <span className="text-white/20">·</span>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
-                  // Override 'sm' size (px-2 py-0.5) with px-3 and font-medium to achieve original px-3 py-0.5 font-medium styling
                   <Tag
                     key={`${tag}-${index}`}
                     size="sm"
@@ -116,7 +115,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           {/* Cover image with glow */}
-          <div className="relative">
+          <div className="relative mt-8">
             {/* Glow behind image */}
             <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-50 blur-2xl" />
             <div className="relative overflow-hidden rounded-xl border border-white/10 bg-card shadow-2xl">

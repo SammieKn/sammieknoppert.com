@@ -71,9 +71,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Custom components for project authoring
     Lead: ({ children }: { children: React.ReactNode }) => (
-      <p className="text-lg leading-relaxed text-muted-foreground">
+      <div className="text-lg leading-relaxed text-muted-foreground mb-6">
         {children}
-      </p>
+      </div>
     ),
 
     ProjectImage: ({ src, alt }: { src: string; alt: string }) => (
@@ -112,6 +112,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     Gallery: ({ children }: { children: React.ReactNode }) => (
       <div className="my-6 grid gap-4 sm:grid-cols-2">{children}</div>
+    ),
+
+    CallToAction: ({ children }: { children: React.ReactNode }) => (
+      <Card className="my-8 border-primary/20 bg-card/50 backdrop-blur-sm">
+        <CardContent className="flex flex-col items-center gap-4 py-8 text-center">
+          <p className="text-lg text-muted-foreground">{children}</p>
+          <a
+            href="mailto:hello@sammieknoppert.com"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            hello@sammieknoppert.com
+          </a>
+        </CardContent>
+      </Card>
     ),
 
     ...components,

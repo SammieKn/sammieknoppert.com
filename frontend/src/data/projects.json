@@ -6,12 +6,7 @@
     "summary": "Reduce time from inspection to report by 50% using best practices of the past.",
     "cover": "/images/projects/bridge-inspection-assistant.webp",
     "featured": true,
-    "tags": [
-      "AI",
-      "Civil Engineering",
-      "Asset Management",
-      "Automation"
-    ]
+    "tags": ["AI", "Civil Engineering", "Asset Management", "Automation", "Arcadis"]
   },
   {
     "slug": "mlops-template",
