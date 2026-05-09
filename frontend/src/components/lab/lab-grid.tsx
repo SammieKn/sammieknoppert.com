@@ -63,7 +63,7 @@ const LAB_ITEMS: LabItem[] = [
   {
     id: "insight-ai-product",
     type: "Insights",
-    title: "Designing AI Features That Don\'t Feel Like Magic Tricks",
+    title: "Designing AI Features That Don't Feel Like Magic Tricks",
     excerpt:
       "How to pair transparent UX states with model outputs so users trust the system without over-promising confidence.",
     tags: ["AI", "Product", "Trust"],
@@ -155,7 +155,11 @@ export function LabGrid() {
                     </div>
                   )}
 
-                  <CardTitle className={cn("leading-tight", !isApp && "text-xl")}>{item.title}</CardTitle>
+                  <CardTitle
+                    className={cn("leading-tight", isApp ? "text-lg" : "text-xl")}
+                  >
+                    {item.title}
+                  </CardTitle>
                 </CardHeader>
 
                 <CardContent className="space-y-4 px-5 pb-5">
