@@ -48,7 +48,7 @@ export function HeroImage({
       <div className="absolute inset-0 scale-95 rounded-2xl bg-gradient-to-br from-primary/20 via-chart-1/10 to-chart-2/20 blur-2xl" />
 
       {/* Main image container */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-card/80 to-card/40 p-1 shadow-2xl backdrop-blur-sm">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card/80 to-card/40 p-1 shadow-2xl backdrop-blur-sm dark:border-white/10">
         <div className="overflow-hidden rounded-xl">
           <Image
             src={src}
@@ -65,7 +65,7 @@ export function HeroImage({
       {floatingCards.map((card) => (
         <div
           key={`${card.position}-${card.label}`}
-          className={`absolute ${card.position} ${card.animation} rounded-lg border border-white/10 bg-card/90 px-3 py-2 shadow-lg backdrop-blur-sm`}
+          className={`absolute ${card.position} ${card.animation} rounded-lg border border-border bg-card/90 px-3 py-2 shadow-lg backdrop-blur-sm dark:border-white/10`}
         >
           <p className="text-xs font-medium text-muted-foreground">
             {card.label}

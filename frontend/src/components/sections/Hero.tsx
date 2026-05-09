@@ -9,7 +9,6 @@ import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { HeroImage } from "./HeroImage";
 import { HeroStats } from "./HeroStats";
 
-// Animated floating shapes component
 function FloatingShapes() {
   return (
     <BackgroundOrbs
@@ -17,20 +16,20 @@ function FloatingShapes() {
         {
           position: "-right-32 -top-32",
           size: "h-96 w-96",
-          gradient: "bg-gradient-to-br from-primary/20 via-chart-1/10 to-transparent",
+          gradient: "bg-gradient-to-br from-primary/25 via-chart-1/15 to-transparent dark:from-primary/20 dark:via-chart-1/10",
           blur: "blur-3xl",
         },
         {
           position: "-bottom-24 -left-24",
           size: "h-72 w-72",
-          gradient: "bg-gradient-to-tr from-chart-2/15 via-primary/10 to-transparent",
+          gradient: "bg-gradient-to-tr from-chart-2/20 via-primary/15 to-transparent dark:from-chart-2/15 dark:via-primary/10",
           blur: "blur-3xl",
           animationDelay: "1s",
         },
         {
           position: "right-1/4 top-1/3",
           size: "h-48 w-48",
-          gradient: "bg-gradient-to-br from-chart-4/10 to-transparent",
+          gradient: "bg-gradient-to-br from-chart-4/15 to-transparent dark:from-chart-4/10",
           blur: "blur-2xl",
           animationDelay: "2s",
         },
@@ -39,33 +38,33 @@ function FloatingShapes() {
         {
           position: "left-[15%] top-[20%]",
           size: "h-3 w-3",
-          color: "bg-primary/30",
+          color: "bg-primary/40 dark:bg-primary/30",
           animation: "animate-float",
         },
         {
           position: "right-[20%] top-[15%]",
           size: "h-2 w-2",
-          color: "bg-chart-1/40",
+          color: "bg-chart-1/55 dark:bg-chart-1/40",
           animation: "animate-float-delayed",
         },
         {
           position: "bottom-[30%] left-[10%]",
           size: "h-4 w-4",
-          color: "bg-chart-2/20",
+          color: "bg-chart-2/30 dark:bg-chart-2/20",
           animation: "animate-float",
           transform: "rotate-45",
         },
         {
           position: "bottom-[20%] right-[15%]",
           size: "h-3 w-3",
-          color: "bg-chart-4/25",
+          color: "bg-chart-4/35 dark:bg-chart-4/25",
           animation: "animate-float-delayed",
           shape: "rounded-sm",
         },
         {
           position: "left-[30%] top-[60%]",
           size: "h-2 w-2",
-          color: "bg-primary/20",
+          color: "bg-primary/30 dark:bg-primary/20",
           animation: "animate-float",
         },
       ]}
@@ -155,7 +154,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="group relative overflow-hidden"
+              className="group relative overflow-hidden transition-[opacity,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-lg"
             >
               <Link href="/projects">
                 <span className="relative z-10">View Projects</span>
@@ -166,7 +165,7 @@ export function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="group border-primary/20 hover:border-primary/40 hover:bg-primary/5"
+              className="group border-primary/20 transition-[background-color,border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:shadow-md"
             >
               <Link href="/#contact">
                 <span>Contact Me</span>
