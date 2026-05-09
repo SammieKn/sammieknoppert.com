@@ -39,7 +39,7 @@ const LAB_ITEMS: LabItem[] = [
     excerpt:
       "A lightweight app that rewrites portfolio case-study prompts for different audiences and tones.",
     tags: ["LLM", "Prompting", "UX"],
-    href: "#",
+    href: "/lab",
   },
   {
     id: "app-meeting-synth",
@@ -48,7 +48,7 @@ const LAB_ITEMS: LabItem[] = [
     excerpt:
       "Turn rough standup notes into concise action lists and follow-up drafts in under a minute.",
     tags: ["Python", "NLP", "Productivity"],
-    href: "#",
+    href: "/lab",
   },
   {
     id: "insight-rag-notes",
@@ -58,7 +58,7 @@ const LAB_ITEMS: LabItem[] = [
       "A quick reflection on chunking trade-offs, retrieval quality, and where small prototypes create the most clarity.",
     tags: ["RAG", "Infra", "Learning"],
     readTime: "3 min read",
-    href: "#",
+    href: "/lab",
   },
   {
     id: "insight-ai-product",
@@ -68,7 +68,7 @@ const LAB_ITEMS: LabItem[] = [
       "How to pair transparent UX states with model outputs so users trust the system without over-promising confidence.",
     tags: ["AI", "Product", "Trust"],
     readTime: "4 min read",
-    href: "#",
+    href: "/lab",
   },
   {
     id: "insight-data-velocity",
@@ -78,7 +78,7 @@ const LAB_ITEMS: LabItem[] = [
       "Notes on balancing maintainability and speed when your roadmap changes weekly and data contracts keep evolving.",
     tags: ["Data", "Agile", "Architecture"],
     readTime: "5 min read",
-    href: "#",
+    href: "/lab",
   },
 ];
 
