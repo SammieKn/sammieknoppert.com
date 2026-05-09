@@ -154,7 +154,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="group relative overflow-hidden transition-[opacity,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-lg"
+              className="group relative overflow-hidden transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-lg"
             >
               <Link href="/projects">
                 <span className="relative z-10">View Projects</span>
