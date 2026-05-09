@@ -24,7 +24,6 @@ type LabItem = {
   excerpt: string;
   tags: string[];
   readTime?: string;
-  href: string;
 };
 
 const FILTERS = ["All", "AI Apps", "Insights", "Experiments"] as const;
@@ -39,7 +38,6 @@ const LAB_ITEMS: LabItem[] = [
     excerpt:
       "A lightweight app that rewrites portfolio case-study prompts for different audiences and tones.",
     tags: ["LLM", "Prompting", "UX"],
-    href: "/lab",
   },
   {
     id: "app-meeting-synth",
@@ -48,7 +46,6 @@ const LAB_ITEMS: LabItem[] = [
     excerpt:
       "Turn rough standup notes into concise action lists and follow-up drafts in under a minute.",
     tags: ["Python", "NLP", "Productivity"],
-    href: "/lab",
   },
   {
     id: "insight-rag-notes",
@@ -58,7 +55,6 @@ const LAB_ITEMS: LabItem[] = [
       "A quick reflection on chunking trade-offs, retrieval quality, and where small prototypes create the most clarity.",
     tags: ["RAG", "Infra", "Learning"],
     readTime: "3 min read",
-    href: "/lab",
   },
   {
     id: "insight-ai-product",
@@ -68,7 +64,6 @@ const LAB_ITEMS: LabItem[] = [
       "How to pair transparent UX states with model outputs so users trust the system without over-promising confidence.",
     tags: ["AI", "Product", "Trust"],
     readTime: "4 min read",
-    href: "/lab",
   },
   {
     id: "insight-data-velocity",
@@ -78,7 +73,6 @@ const LAB_ITEMS: LabItem[] = [
       "Notes on balancing maintainability and speed when your roadmap changes weekly and data contracts keep evolving.",
     tags: ["Data", "Agile", "Architecture"],
     readTime: "5 min read",
-    href: "/lab",
   },
 ];
 
@@ -140,10 +134,12 @@ export function LabGrid() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredItems.map((item) => {
             const isApp = item.type === "AI Apps";
+            const itemHref = `/lab#${item.id}`;
 
             return (
               <Card
                 key={item.id}
+                id={item.id}
                 className="flex h-full flex-col gap-0 border-white/10 bg-card/50 py-0 backdrop-blur-sm"
               >
                 <CardHeader className="space-y-3 p-5 pb-4">
@@ -170,7 +166,7 @@ export function LabGrid() {
                 <CardFooter className="mt-auto px-5 pb-5">
                   {isApp ? (
                     <Button asChild size="sm" className="w-full">
-                      <Link href={item.href}>
+                      <Link href={itemHref}>
                         <Bot className="h-4 w-4" />
                         Try it out
                         <ExternalLink className="h-4 w-4" />
@@ -180,7 +176,7 @@ export function LabGrid() {
                     <div className="flex w-full items-center justify-between text-sm">
                       <span className="text-muted-foreground">{item.readTime}</span>
                       <Link
-                        href={item.href}
+                        href={itemHref}
                         className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-primary"
                       >
                         Read more
