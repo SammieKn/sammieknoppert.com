@@ -1,13 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-
-import { Download } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 import { BackgroundOrbs } from "@/components/ui/background-orbs";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -225,19 +221,6 @@ export function About() {
             {/* Visual hint: fade edges to show more content */}
             <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-background to-transparent md:hidden" />
           </div>
-        </div>
-
-        {/* Resume button standalone on the right */}
-        <div className="animate-on-scroll flex justify-end">
-          <Button asChild className="group relative overflow-hidden">
-            <Link href="/cv/sammie-knoppert-cv.pdf">
-              <span className="relative z-10 flex items-center">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </span>
-              <span className="absolute inset-0 -z-0 bg-gradient-to-r from-chart-1 to-chart-2 opacity-0 transition-opacity group-hover:opacity-100" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
