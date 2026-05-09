@@ -27,7 +27,7 @@ export function Contact() {
             position: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
             size: "h-96 w-96",
             gradient:
-              "bg-gradient-to-br from-primary/10 via-chart-2/5 to-transparent",
+              "bg-gradient-to-br from-primary/15 via-chart-2/8 to-transparent dark:from-primary/10 dark:via-chart-2/5",
             blur: "blur-3xl",
           },
         ]}
@@ -60,7 +60,7 @@ export function Contact() {
             </div>
 
             {/* Contact Card */}
-            <Card className="mt-6 w-full border-border bg-card shadow-lg backdrop-blur-sm">
+            <Card className="mt-6 w-full border-border bg-card shadow-[0_4px_24px_-4px_rgba(71,85,105,0.12),0_2px_8px_-2px_rgba(71,85,105,0.08)] backdrop-blur-sm dark:shadow-lg">
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
                 <CardDescription>
@@ -88,7 +88,7 @@ export function Contact() {
                   <Button
                     asChild
                     variant="outline"
-                    className="group border-border transition-all hover:border-primary/30 hover:bg-primary/5"
+                    className="group border-border transition-all hover:-translate-y-px hover:border-primary/30 hover:bg-primary/5 hover:shadow-sm"
                   >
                     <a href={LINKEDIN} target="_blank" rel="noreferrer">
                       <Linkedin className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
@@ -98,7 +98,7 @@ export function Contact() {
                   <Button
                     asChild
                     variant="outline"
-                    className="group border-border transition-all hover:border-primary/30 hover:bg-primary/5"
+                    className="group border-border transition-all hover:-translate-y-px hover:border-primary/30 hover:bg-primary/5 hover:shadow-sm"
                   >
                     <a href={GITHUB} target="_blank" rel="noreferrer">
                       <Github className="mr-2 h-4 w-4 transition-colors group-hover:text-primary" />
