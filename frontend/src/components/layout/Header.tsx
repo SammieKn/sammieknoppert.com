@@ -57,6 +57,11 @@ export function Header() {
     router.push("/projects");
   }
 
+  function handleLabNav() {
+    setMobileMenuOpen(false);
+    router.push("/lab");
+  }
+
   useEffect(() => {
     if (sessionStorage.getItem(DISABLE_SMOOTH_SCROLL_ONCE_KEY) === "1") {
       document.documentElement.style.scrollBehavior = "auto";
@@ -98,6 +103,20 @@ export function Header() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
+
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+              >
+                <Link
+                  href="/lab"
+                  className="transition-colors hover:text-primary"
+                >
+                  Lab
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuLink
@@ -165,6 +184,13 @@ export function Header() {
                     {item.label}
                   </button>
                 ))}
+                <button
+                  type="button"
+                  onClick={handleLabNav}
+                  className="flex items-center rounded-lg px-4 py-3 text-left text-lg font-medium transition-colors hover:bg-accent hover:text-primary"
+                >
+                  Lab
+                </button>
                 <button
                   type="button"
                   onClick={handleProjectsNav}
