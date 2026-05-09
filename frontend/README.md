@@ -76,6 +76,12 @@ The deployment process automatically:
 2. Builds the Next.js application
 3. Deploys to Cloudflare Workers
 
+### Pull request previews
+
+Pull requests that change `frontend/**` trigger the
+`.github/workflows/deploy-pr-preview.yml` workflow. It deploys a PR-specific
+Cloudflare Worker preview and comments the preview URL on the pull request.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
