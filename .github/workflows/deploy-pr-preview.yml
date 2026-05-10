@@ -2,7 +2,7 @@ name: Deploy PR Preview to Cloudflare Workers
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "frontend/**"
       - ".github/workflows/deploy-pr-preview.yml"
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   deploy-preview:
-    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository && !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     defaults:
       run:
