@@ -40,16 +40,18 @@ export function HeroImage({
       className="animate-fade-in-up relative mx-auto w-full max-w-md"
       style={{ animationDelay }}
     >
-      {/* Decorative ring */}
-      <div className="absolute -inset-4 animate-spin-slow rounded-full border border-dashed border-primary/20" />
-      <div className="absolute -inset-8 animate-spin-slow-reverse rounded-full border border-dashed border-chart-1/10" />
+      {/* Decorative rings */}
+      <div className="absolute -inset-4 animate-spin-slow rounded-full border border-dashed border-primary/30" />
+      <div className="absolute -inset-8 animate-spin-slow-reverse rounded-full border border-dashed border-chart-1/20" />
 
-      {/* Glow effect behind image */}
-      <div className="absolute inset-0 scale-95 rounded-2xl bg-gradient-to-br from-primary/20 via-chart-1/10 to-chart-2/20 blur-2xl" />
+      {/* Ambient glow - large diffuse spread */}
+      <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-chart-1/35 via-primary/15 to-chart-2/25 blur-3xl" />
+      {/* Concentrated center glow */}
+      <div className="absolute inset-8 rounded-2xl bg-gradient-to-br from-chart-1/30 to-primary/20 blur-2xl" />
 
-      {/* Main image container */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card/80 to-card/40 p-1 shadow-2xl backdrop-blur-sm dark:border-white/10">
-        <div className="overflow-hidden rounded-xl">
+      {/* Main image container - gradient border effect */}
+      <div className="relative rounded-2xl bg-gradient-to-br from-primary/50 via-chart-1/60 to-chart-2/40 p-[1px] shadow-2xl">
+        <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-primary/8 via-card to-muted/60 dark:from-chart-1/20 dark:via-card dark:to-background/80">
           <Image
             src={src}
             alt={alt}

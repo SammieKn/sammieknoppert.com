@@ -10,7 +10,7 @@ export const workExperience = [
     role: "Product Owner",
     startDate: "2024-11",
     endDate: "Present",
-    avatarSrc: "/images/avatar/role-product-owner.png",
+    avatarSrc: "/images/avatar/avatar_product_owner.webp",
     tags: ["Agile", "Stakeholder Management", "Requirements Analysis", "Scrum"],
     hook: "My strongest asset isn't just writing code—it's knowing *what* to code.",
     description: `As a Product Owner, I act as the bridge between complex asset management needs and technical execution. I don't just manage a backlog; I look for "high leverage" opportunities—small, strategic automations that solve massive headaches.
@@ -24,7 +24,7 @@ My philosophy is simple: tackle the highest risks first. I motivate my team by s
     role: "Data Scientist & Engineer",
     startDate: "2024-05",
     endDate: "Present",
-    avatarSrc: "/images/avatar/role-data-scientist.png",
+    avatarSrc: "/images/avatar/avatar_data_scientist.webp",
     tags: [
       "Python",
       "LLMs",
@@ -45,7 +45,7 @@ I fixed that specific problem by implementing **Large Language Models (LLMs)** t
     role: "Consultant Asset Management",
     startDate: "2023-06",
     endDate: "Present",
-    avatarSrc: "/images/avatar/role-consultant.png",
+    avatarSrc: "/images/avatar/avatar_consultant.webp",
     tags: [
       "Failure Mode Analysis",
       "Civil Engineer",
@@ -62,7 +62,7 @@ This field experience is what differentiates me as a consultant. I understand th
     role: "Sales & Client Relations",
     startDate: "2015",
     endDate: "2018",
-    avatarSrc: "/images/avatar/role-sales.png",
+    avatarSrc: "/images/avatar/avatar_sales.webp",
     tags: ["Sales", "Client Relations", "Communication", "Negotiation"],
     hook: "It might seem unusual for an engineer to highlight sales experience, but I consider it my unfair advantage.",
     description: `Long before I was calculating structural integrity, I was doing door-to-door sales and working retail.
