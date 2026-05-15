@@ -51,7 +51,7 @@ export function Contact() {
               {/* Glow effect */}
               <div className="absolute inset-0 scale-90 rounded-full bg-gradient-to-br from-primary/15 via-chart-2/10 to-transparent blur-2xl" />
               <Image
-                src="/images/avatar/avatar_contact.png"
+                src="/images/avatar/avatar_contact.webp"
                 alt="Avatar pointing down towards the contact info"
                 width={320}
                 height={320}

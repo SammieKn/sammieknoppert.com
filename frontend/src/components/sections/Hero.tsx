@@ -182,7 +182,7 @@ export function Hero() {
 
         {/* Right: Image with decorations */}
         <HeroImage
-          src="/images/avatar/avatar_hero.png"
+          src="/images/avatar/avatar_hero.webp"
           alt="Portrait of Sammie Knoppert"
         />
       </div>
