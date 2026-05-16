@@ -33,7 +33,7 @@ const monkeyTypes = [
 ] as const;
 
 export const metadata = {
-  title: "Monkey Page",
+  title: "Monkey Kingdom",
   description:
     "A colorful spotlight on monkey diversity and how closely we are related.",
 };
