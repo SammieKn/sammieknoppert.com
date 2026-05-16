@@ -57,6 +57,11 @@ export function Header() {
     router.push("/projects");
   }
 
+  function handleMonkeysNav() {
+    setMobileMenuOpen(false);
+    router.push("/monkeys");
+  }
+
   useEffect(() => {
     if (sessionStorage.getItem(DISABLE_SMOOTH_SCROLL_ONCE_KEY) === "1") {
       document.documentElement.style.scrollBehavior = "auto";
@@ -109,6 +114,19 @@ export function Header() {
                   className="transition-colors hover:text-primary"
                 >
                   Projects
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+              >
+                <Link
+                  href="/monkeys"
+                  className="transition-colors hover:text-primary"
+                >
+                  Monkeys
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -171,6 +189,13 @@ export function Header() {
                   className="flex items-center rounded-lg px-4 py-3 text-left text-lg font-medium transition-colors hover:bg-accent hover:text-primary"
                 >
                   Projects
+                </button>
+                <button
+                  type="button"
+                  onClick={handleMonkeysNav}
+                  className="flex items-center rounded-lg px-4 py-3 text-left text-lg font-medium transition-colors hover:bg-accent hover:text-primary"
+                >
+                  Monkeys
                 </button>
 
                 {/* Theme toggle in mobile menu */}
