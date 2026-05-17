@@ -1,0 +1,146 @@
+<Lead>
+  We cut structural analysis time by a third by understanding what the engineers
+  actually needed, before writing a single line of code.
+</Lead>
+
+## The Challenge
+
+Amsterdam has thousands of retaining walls lining its canals. Every few years,
+divers go down to inspect them and come back up with thick PDF reports: tables of
+measurements, defect codes, notes scratched together underwater. Someone has to
+turn all of that into a structural risk assessment, named the ARK.
+
+The brief from the Municipality of Amsterdam was half an a4, but boiled down to:
+*"Use an LLM to read the tables and recognise the cracks."* Together with colleagues
+from Arcadis and engineering consultancy Witteveen+Bos, we could have built exactly that in a
+few weeks. Instead, we spent the first weeks figuring out what was actually broken.
+
+I made a point of being on-site one day a week, not in meetings, no other work.
+The engineers would open a PDF, manually copy measurements into a
+spreadsheet, cross-reference defects, and make a
+severity call. Twenty-four hours per report on average, not because they were
+slow, but because the data was a mess and no one had ever defined what the
+structure should be.
+
+Crucially: **these engineers had no interest in AI making decisions for them.**
+They wanted clean, structured data so they could make better decisions faster.
+
+## The Solution
+
+### The Data Model
+
+Before writing a single prompt or line of code, we needed to define what we were
+extracting. This is where having a** civil engineering background** became genuinely
+useful. I could sit in a room with the municipality's structural experts and
+actually follow the conversation: what a *rak* is, why a *GrondVoerendGat* carries
+different risk than *LokaalVerdwenenMetselwerk*, why the connection between a pile
+and its cap matters more than its diameter alone.
+
+We designed a schema that mapped the physical reality of a retaining wall to
+strict, validated fields. Not a loose JSON blob. A contract, enforced by Pydantic.
+The hierarchy looks like this:
+
+<MermaidDiagram chart={`graph TD
+    A[Rak / Inspection Section] --> B[Rakdeel / Structural Zone]
+    B --> C[Bovenbouw / Superstructure]
+    B --> D[Onderbouw / Substructure]
+    C --> E[Masonry]
+    C --> F1[Defects]
+    D --> G[Piles]
+    D --> H[Caps]
+    D --> I[Floor]
+    D --> J[Underflow Screen]
+    G --> K[Wood Samples]
+    D --> F2[Defects]
+    style A fill:#dbeafe,stroke:#93c5fd,color:#1e3a5f
+    style B fill:#ede9fe,stroke:#a78bfa,color:#2e1065
+    style C fill:#fef3c7,stroke:#fcd34d,color:#451a03
+    style D fill:#dcfce7,stroke:#86efac,color:#052e16
+    style F1 fill:#fee2e2,stroke:#fca5a5,color:#450a0a
+    style F2 fill:#fee2e2,stroke:#fca5a5,color:#450a0a`} />
+
+<Callout title="Why the model came before the code">
+  Every field in this schema was agreed on with the municipality's engineers
+  before anyone wrote a prompt. If the pipeline produced data that didn't fit,
+  it failed **loudly**, which meant downstream analysis was always based on something
+  real, not an AI hallucination.
+</Callout>
+
+### Three Sprints
+
+<ProjectImage
+  src="/images/projects/municipality-amsterdam-sprints.webp"
+  alt="Sprint delivery approach for the ARK project"
+  caption="We delivered in three sprints, validating on real data before increasing complexity."
+/>
+
+We built in three sprints with one rule: don't increase complexity until the
+previous step works on real data.
+- Sprint 1 was the data model and shared vocabulary.
+- Sprint 2 tested the riskiest hypothesis: can we actually extract clean structured data from these PDFs?
+- Sprint 3 was the full pipeline with logging and tests, deployed on Viktor.
+
+<div className="my-6 overflow-x-auto rounded-lg border border-border">
+  <table className="w-full text-sm">
+    <thead className="bg-muted/50">
+      <tr>
+        <th className="px-4 py-3 text-left font-semibold text-foreground">Layer</th>
+        <th className="px-4 py-3 text-left font-semibold text-foreground">Tool</th>
+        <th className="px-4 py-3 text-left font-semibold text-foreground">Role</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-border text-muted-foreground">
+      <tr>
+        <td className="px-4 py-3 font-medium text-foreground">Table extraction</td>
+        <td className="px-4 py-3">Azure Document Intelligence</td>
+        <td className="px-4 py-3">Parses PDF layout and tables</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-3 font-medium text-foreground">Defect classification</td>
+        <td className="px-4 py-3">Azure OpenAI <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">gpt-4o</code></td>
+        <td className="px-4 py-3">Reads context to disambiguate defect types</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-3 font-medium text-foreground">Validation</td>
+        <td className="px-4 py-3">Pydantic v2</td>
+        <td className="px-4 py-3">Enforces the schema; wrong data stops the pipeline</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+*The source code is publicly available on [GitHub](https://github.com/SammieKn/tekstherkenning-ark).*
+
+## Results
+
+Analysis time dropped from 24 hours to 16 per report. Eight hours back, at €150/hr
+for a senior structural engineer.
+
+<ROICalculator baseHours="24" newHours="16" hourlyRate="150" />
+
+## What Came After
+
+Honestly, this is one of the clients I enjoy working for most. The Municipality of
+Amsterdam is doing genuinely innovative work in a sector that moves slowly by
+design. They don't rush new technology. They roll things out
+carefully, test thoroughly, and are almost unreasonably rigorous about checking.
+
+With this project, we gave their stakeholders proof on the use of AI in their work,
+now it is up to them to promote and implement it across the organisation. But I hope
+to be involved in that process as well.
+
+After this succesfull collaboration, they have asked me to make a new application,
+the soft-shell calculator
+based on TU Delft methodologies ([GitHub](https://github.com/SammieKn/soft-shell-calculator-ark)), and eventually to a bigger shift:
+rather than coming in as a
+vendor, the municipality brought me on as **Product Owner** for their Bridges and
+Retaining Walls development toolings.
+
+And I'll be honest: I live in Amsterdam. I cycle past these canals every week. The
+retaining walls we worked on are ones I can point to from my bike, and I hope
+there's a lot more of that to come.
+
+<CallToAction>
+  If you're working on a complex data or AI problem in the infrastructure space
+  and want to approach it properly, [let's talk](/#contact).
+</CallToAction>

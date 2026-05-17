@@ -2,6 +2,8 @@ import type { MDXComponents } from "mdx/types";
 import Image, { type ImageProps } from "next/image";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ROICalculator } from "@/components/projects/roi-calculator";
+import { MermaidDiagram } from "@/components/projects/mermaid-diagram";
 
 // Custom MDX components for rich project content
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -58,6 +60,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </blockquote>
     ),
 
+    // Tables
+    table: ({ children }) => (
+      <div className="my-6 overflow-x-auto rounded-lg border">
+        <table className="w-full text-sm">{children}</table>
+      </div>
+    ),
+    thead: ({ children }) => (
+      <thead className="bg-muted/50 text-foreground">{children}</thead>
+    ),
+    tbody: ({ children }) => (
+      <tbody className="divide-y divide-border text-muted-foreground">
+        {children}
+      </tbody>
+    ),
+    tr: ({ children }) => <tr>{children}</tr>,
+    th: ({ children }) => (
+      <th className="px-4 py-3 text-left font-semibold">{children}</th>
+    ),
+    td: ({ children }) => <td className="px-4 py-3">{children}</td>,
+
     // Images - uses Next.js Image for optimization
     img: (props) => (
       <Image
@@ -76,7 +98,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
 
-    ProjectImage: ({ src, alt }: { src: string; alt: string }) => (
+    ProjectImage: ({
+      src,
+      alt,
+      caption,
+    }: {
+      src: string;
+      alt: string;
+      caption?: string;
+    }) => (
       <figure className="my-8">
         <div className="mx-auto max-w-3xl rounded-lg border border-border bg-card p-2 shadow-md">
           <Image
@@ -87,9 +117,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             className="h-auto w-full rounded-md"
           />
         </div>
-        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-          {alt}
-        </figcaption>
+        {(caption || alt) && (
+          <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+            {caption ?? alt}
+          </figcaption>
+        )}
       </figure>
     ),
 
@@ -117,7 +149,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     CallToAction: ({ children }: { children: React.ReactNode }) => (
       <Card className="my-8 border-primary/20 bg-card/50 backdrop-blur-sm">
         <CardContent className="flex flex-col items-center gap-4 py-8 text-center">
-          <p className="text-lg text-muted-foreground">{children}</p>
+          <div className="text-lg text-muted-foreground [&_p]:text-lg">
+            {children}
+          </div>
           <a
             href="mailto:hello@sammieknoppert.com"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
@@ -126,6 +160,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           </a>
         </CardContent>
       </Card>
+    ),
+
+    ROICalculator: ({
+      baseHours,
+      newHours,
+      hourlyRate,
+    }: {
+      baseHours: string;
+      newHours: string;
+      hourlyRate: string;
+    }) => (
+      <ROICalculator
+        baseHours={baseHours}
+        newHours={newHours}
+        hourlyRate={hourlyRate}
+      />
+    ),
+
+    MermaidDiagram: ({ chart }: { chart: string }) => (
+      <MermaidDiagram chart={chart} />
     ),
 
     ...components,

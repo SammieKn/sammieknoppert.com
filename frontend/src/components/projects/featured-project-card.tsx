@@ -15,10 +15,9 @@ interface FeaturedProjectCardProps {
 export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
   return (
     <div className="group relative">
-      {/* Glow effect */}
-      <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/50 via-accent/50 to-primary/50 opacity-0 blur-lg transition-all duration-500 group-hover:opacity-75" />
+      {/* Hover glow */}
+      <div className="absolute -inset-0.5 rounded-xl bg-linear-to-r from-primary/30 to-accent/30 opacity-0 blur transition-opacity duration-300 group-hover:opacity-75" />
 
-      {/* Card */}
       <Card className="relative overflow-hidden border-white/10 bg-card/50 backdrop-blur-sm transition-all duration-300 group-hover:border-white/20 group-hover:bg-card/70">
         {/* Featured badge */}
         <div className="absolute right-4 top-4 z-10 flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
@@ -27,7 +26,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         </div>
 
         <div className="grid gap-6 p-6 md:grid-cols-2 md:gap-8 md:p-8">
-          {/* Cover image - clickable */}
+          {/* Cover image */}
           <Link
             href={`/projects/${project.slug}`}
             className="relative aspect-video overflow-hidden rounded-lg border border-white/10 bg-card"
@@ -51,10 +50,8 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
               <p className="text-muted-foreground">{project.summary}</p>
             </div>
 
-            {/* Tags */}
             <TagList tags={project.tags} size="md" />
 
-            {/* Links */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <ProjectLinks links={project.links} variant="default" />
               <Button asChild size="sm" className="ml-auto">

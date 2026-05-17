@@ -9,33 +9,14 @@
     "tags": ["AI", "Civil Engineering", "Asset Management", "Automation", "Arcadis"]
   },
   {
-    "slug": "mlops-template",
-    "title": "MLOps Template",
-    "date": "2025-04-10",
-    "summary": "A starter structure for shipping small ML features safely and repeatably.",
-    "cover": "/images/projects/placeholder.svg",
-    "tags": [
-      "MLOps",
-      "Python",
-      "Templates"
-    ],
+    "slug": "municipality-amsterdam",
+    "title": "AI Text Extraction for Amsterdam",
+    "date": "2025-03-01",
+    "summary": "Cut retaining wall structural analysis time by 33% for the Municipality of Amsterdam by stopping a risky AI implementation and building a rigorous, human-in-the-loop data pipeline instead.",
+    "cover": "/images/projects/municipality-amsterdam.webp",
+    "tags": ["AI & Automation", "Product Management", "Civil Engineering", "Python"],
     "links": {
-      "code": "https://github.com/"
-    }
-  },
-  {
-    "slug": "supabase-portfolio-dashboard",
-    "title": "Portfolio Content Dashboard",
-    "date": "2025-05-20",
-    "summary": "A concept for managing portfolio content with a clean data model.",
-    "cover": "/images/projects/placeholder.svg",
-    "tags": [
-      "Supabase",
-      "TypeScript",
-      "Design"
-    ],
-    "links": {
-      "code": "https://github.com/"
+      "code": "https://github.com/SammieKn/tekstherkenning-ark"
     }
   }
 ]
