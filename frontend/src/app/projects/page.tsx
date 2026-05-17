@@ -47,17 +47,9 @@ export default function ProjectsPage() {
         {/* Featured Project */}
         {featured && <FeaturedProjectCard project={featured} />}
 
-        {/* Other Projects Grid */}
+        {/* Other Projects */}
         {otherProjects.length > 0 && (
-          <div
-            className={`grid gap-6 ${
-              otherProjects.length === 1
-                ? "grid-cols-1"
-                : otherProjects.length === 2
-                ? "grid-cols-1 sm:grid-cols-2"
-                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-            }`}
-          >
+          <div className="flex flex-col gap-6">
             {otherProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}

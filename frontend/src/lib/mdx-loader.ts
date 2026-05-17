@@ -1,46 +1,25 @@
 import type { ComponentType } from "react";
 
-/**
- * Map of project slugs to their MDX dynamic imports.
- * This allows Next.js to compile MDX at build time while supporting dynamic routes.
- *
- * When adding a new project:
- * 1. Create the MDX file in src/content/projects/{slug}.mdx
- * 2. Add an entry here mapping the slug to the import
- */
-const mdxModules: Record<
-  string,
-  () => Promise<{ default: ComponentType }>
-> = {
-  "bridge-inspection-ai": () =>
-    import("@/content/projects/bridge-inspection-ai.mdx"),
-  "mlops-template": () =>
-    import("@/content/projects/mlops-template.mdx"),
-  "supabase-portfolio-dashboard": () =>
-    import("@/content/projects/supabase-portfolio-dashboard.mdx"),
-};
+import { getProjectSlugs } from "@/lib/mdx";
 
 /**
- * Get all available project slugs (for generateStaticParams)
+ * Get all available project slugs for static generation.
+ * Driven by projects.json — no separate registration needed.
  */
 export function getMdxProjectSlugs(): string[] {
-  return Object.keys(mdxModules);
+  return getProjectSlugs();
 }
 
 /**
- * Dynamically load an MDX component by slug
+ * Dynamically load an MDX component by slug.
+ * Next.js bundles all files in the directory; the slug selects at runtime.
  */
 export async function getMdxContent(
   slug: string,
 ): Promise<ComponentType | null> {
-  const loader = mdxModules[slug];
-  if (!loader) {
-    return null;
-  }
-
   try {
-    const module = await loader();
-    return module.default;
+    const mdxModule = await import(`@/content/projects/${slug}.mdx`);
+    return mdxModule.default;
   } catch (error) {
     console.error(`Failed to load MDX for slug: ${slug}`, error);
     return null;
